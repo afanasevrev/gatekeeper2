@@ -42,6 +42,10 @@ public class Controller implements Initializable {
     //Создание кнопки "Удалить"
     MenuItem menuDelete = new MenuItem("Удалить");
 
+    //***********************
+    //Временно
+    TreeItem<String> server = new TreeItem<>("Сервер");
+    //***********************
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -84,5 +88,15 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
+            //Добавляем реакцию на нажатие кнопки "Добавить"
+            menuAdd.setOnAction(event -> {
+                //Временно
+                mainSystem.getChildren().add(server);
+            });
+            //Добавляем реакцию на нажатие кнопки "Удалить"
+            menuDelete.setOnAction(event -> {
+                //Временно
+                mainSystem.getChildren().remove(server);
+            });
     }
 }
