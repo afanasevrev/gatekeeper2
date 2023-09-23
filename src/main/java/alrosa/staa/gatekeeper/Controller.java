@@ -82,6 +82,7 @@ public class Controller implements Initializable {
             windowTree.getChildren().addAll(root);
             //В контекстное меню добавляем кнопки
             contextMenu.getItems().addAll(menuAdd, menuDelete);
+            //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
     }
 }
