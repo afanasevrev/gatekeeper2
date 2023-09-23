@@ -3,9 +3,7 @@ package alrosa.staa.gatekeeper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -37,6 +35,12 @@ public class Controller implements Initializable {
     private final ImageView imageViewMain = new ImageView(imageMain);
     //Добавялем круг, чтоб поместить туда наш рисунок
     private final Circle circleMain = new Circle();
+    //Добавляем контекстное меню
+    ContextMenu contextMenu = new ContextMenu();
+    //Создание кнопки "Добавить"
+    MenuItem menuAdd = new MenuItem("Добавить");
+    //Создание кнопки "Удалить"
+    MenuItem menuDelete = new MenuItem("Удалить");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -76,5 +80,8 @@ public class Controller implements Initializable {
             AnchorPane.setTopAnchor(root, 0.0);
             //В окно для дерева добавляем наше дерево с надписью "Главный"
             windowTree.getChildren().addAll(root);
+            //В контекстное меню добавляем кнопки
+            contextMenu.getItems().addAll(menuAdd, menuDelete);
+            root.setContextMenu(contextMenu);
     }
 }
