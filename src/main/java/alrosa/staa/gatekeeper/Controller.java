@@ -2,7 +2,6 @@ package alrosa.staa.gatekeeper;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
@@ -10,24 +9,19 @@ import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
     //Добавялем вертикальный сплиттер
-    private SplitPane splitVertical = new SplitPane();
+    private final SplitPane splitVertical = new SplitPane();
+    //Добавляем главную ветку дерева
+    private TreeItem<String> mainSystem = new TreeItem<>("Главный");
     //Добавляем корень дерева
-    private TreeView<String> root = new TreeView<String>();
-    //Добавляем главное дерево
-    private TreeItem<String> mainSystem = new TreeItem<String>("Главный");
+    private TreeView<String> root = new TreeView<>(mainSystem);
     //Добавляем верхнее окно
     private AnchorPane windowUp = new AnchorPane();
     //Добавляем нижнее окно
@@ -38,9 +32,12 @@ public class Controller implements Initializable {
     private AnchorPane windowTree = new AnchorPane();
     //Добавляем окно для объектов
     private AnchorPane windowObjects = new AnchorPane();
-    //Указываем путь к главной иконке
+    //Указываем путь к главному рисунку
     private Image imageMain = new Image("main.png");
-    private ImageView imageViewMain = new ImageView();
+    private ImageView imageViewMain = new ImageView(imageMain);
+    //Добавялем круг, чтоб поместить туда наш рисунок
+    private Circle circleMain = new Circle();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -67,6 +64,18 @@ public class Controller implements Initializable {
             windowUp.getChildren().addAll(splitHorizontal);
             //К горизонтальному спиттеру добавляем два окна, для дерева и объектов
             splitHorizontal.getItems().addAll(windowTree, windowObjects);
-            //
+            //Добавляем в круг наш рисунок
+            imageViewMain.setFitHeight(30);
+            imageViewMain.setFitWidth(30);
+            circleMain.setRadius(40);
+            imageViewMain.setClip(circleMain);
+            mainSystem.setGraphic(imageViewMain);
+            //Растягиваем наше дерево в окне так, чтобы он растягивался вместе с окном
+            AnchorPane.setBottomAnchor(root, 0.0);
+            AnchorPane.setLeftAnchor(root, 0.0);
+            AnchorPane.setRightAnchor(root, 0.0);
+            AnchorPane.setTopAnchor(root, 0.0);
+            //В окно для дерева добавляем наше дерево с надписью "Главный"
+            windowTree.getChildren().addAll(root);
     }
 }
