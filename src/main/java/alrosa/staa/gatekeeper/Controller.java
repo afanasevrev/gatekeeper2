@@ -19,25 +19,24 @@ public class Controller implements Initializable {
     //Добавялем вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем главную ветку дерева
-    private TreeItem<String> mainSystem = new TreeItem<>("Главный");
+    private final TreeItem<String> mainSystem = new TreeItem<>("Главный");
     //Добавляем корень дерева
-    private TreeView<String> root = new TreeView<>(mainSystem);
+    private final TreeView<String> root = new TreeView<>(mainSystem);
     //Добавляем верхнее окно
-    private AnchorPane windowUp = new AnchorPane();
+    private final AnchorPane windowUp = new AnchorPane();
     //Добавляем нижнее окно
-    private AnchorPane windowDown = new AnchorPane();
+    private final AnchorPane windowDown = new AnchorPane();
     //Добавляем горизонтальный сплиттер
-    private SplitPane splitHorizontal = new SplitPane();
+    private final SplitPane splitHorizontal = new SplitPane();
     //Добавляем окно для дерева
-    private AnchorPane windowTree = new AnchorPane();
+    private final AnchorPane windowTree = new AnchorPane();
     //Добавляем окно для объектов
-    private AnchorPane windowObjects = new AnchorPane();
+    private final AnchorPane windowObjects = new AnchorPane();
     //Указываем путь к главному рисунку
-    private Image imageMain = new Image("main.png");
-    private ImageView imageViewMain = new ImageView(imageMain);
+    private final Image imageMain = new Image("main.png");
+    private final ImageView imageViewMain = new ImageView(imageMain);
     //Добавялем круг, чтоб поместить туда наш рисунок
-    private Circle circleMain = new Circle();
-
+    private final Circle circleMain = new Circle();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
