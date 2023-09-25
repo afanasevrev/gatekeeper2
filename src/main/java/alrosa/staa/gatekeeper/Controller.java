@@ -6,6 +6,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import java.net.URL;
@@ -44,7 +45,7 @@ public class Controller implements Initializable {
 
     //***********************
     //Временно
-    TreeItem<String> server = new TreeItem<>("Сервер");
+    TreeItem<String> server = new TreeItem<>("Server");
     //***********************
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -97,6 +98,17 @@ public class Controller implements Initializable {
             menuDelete.setOnAction(event -> {
                 //Временно
                 mainSystem.getChildren().remove(server);
+            });
+            //Временно
+            root.setOnMouseClicked(event -> {
+                TreeItem<String> selectedItem = root.getSelectionModel().getSelectedItem();
+                // Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
+                if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
+                    // Получите значение выбранного элемента
+                    String value = selectedItem.getValue();
+                    // Выведите значение в консоль или выполните другие нужные операции
+                    System.out.println("The element is selected : " + value);
+                }
             });
     }
 }
