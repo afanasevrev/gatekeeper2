@@ -1,4 +1,5 @@
 package alrosa.staa.gatekeeper.objects;
 
-public class ControlPanel {
+public class ControlPanel extends MainObject {
+
 }
