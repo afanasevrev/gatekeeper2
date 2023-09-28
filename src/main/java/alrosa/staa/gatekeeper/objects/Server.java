@@ -3,8 +3,7 @@ package alrosa.staa.gatekeeper.objects;
 public class Server extends MainObject {
     private String name;
     private String ipAddress;
-
-
+    
     public Server() {
         this.name = "Сервер";
         this.ipAddress = "0.0.0.0";
@@ -23,8 +22,18 @@ public class Server extends MainObject {
     public String getIpAddress() {
         return ipAddress;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
+
         return name;
+    }
+
+    public String getName() {
+        return getName();
     }
 }

@@ -35,6 +35,6 @@ public class Computer extends MainObject {
 
     @Override
     public String toString() {
-        return "name";
+        return getName();
     }
 }

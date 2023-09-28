@@ -1,6 +1,6 @@
 package alrosa.staa.gatekeeper.objects;
 
-public class MainObject {
+public abstract class MainObject {
 
     @Override
     public String toString() {
