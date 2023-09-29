@@ -3,6 +3,7 @@ package alrosa.staa.gatekeeper;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.Global;
 import alrosa.staa.gatekeeper.objects.MainSystem;
+import alrosa.staa.gatekeeper.objects.Server;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
@@ -88,23 +89,33 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
-            //Добавляем реакцию на нажатие кнопки "Добавить"
-            menuAdd.setOnAction(event -> {
-                //Временно
-            });
-            //Добавляем реакцию на нажатие кнопки "Удалить"
-            menuDelete.setOnAction(event -> {
-                //Временно
-            });
+
             //Временно
             root.setOnMouseClicked(event -> {
                TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
                // Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
                if (selectedItem != null && event.getButton() == MouseButton.SECONDARY) {
-                    // Получаем значение выбранного элемента
-                    Direction value = selectedItem.getValue().getDirection();
-                    // Выведите значение в консоль или выполните другие нужные операции
-                    System.out.println("The element is selected : " + value);
+                   // Получаем значение выбранного элемента
+                   Direction value = selectedItem.getValue().getDirection();
+                   //Добавляем реакцию на нажатие кнопки "Добавить"
+                   menuAdd.setOnAction(event1 -> {
+                       //Временно
+                       switch(value) {
+                           case MAINSYSTEM: TreeItem<Global> server = new TreeItem<Global>(new Server("СТ АА"));
+                                            mainSystem.getChildren().addAll(server);
+                                            break;
+                           default: System.out.println("Selected value: " + value);
+                       }
+                   });
+                   //Добавляем реакцию на нажатие кнопки "Удалить"
+                   menuDelete.setOnAction(event1 -> {
+                       //Временно
+                       switch(value) {
+                           case SERVER: mainSystem.getChildren().remove(selectedItem);
+                               break;
+                           default: System.out.println("Selected value: " + value);
+                       }
+                   });
                 }
             });
     }

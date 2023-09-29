@@ -29,13 +29,12 @@ public class Server extends Global {
         this.name = name;
     }
     public String getName() {
-        return getName();
+        return name;
     }
     @Override
     public Direction getDirection() {
         return this.direction;
     }
-
     @Override
     public String toString() {
         return getName();

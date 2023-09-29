@@ -5,4 +5,6 @@ module alrosa.staa.gatekeeper {
     exports alrosa.staa.gatekeeper;
     exports alrosa.staa.gatekeeper.objects;
     opens alrosa.staa.gatekeeper.objects to javafx.fxml;
+    exports alrosa.staa.gatekeeper.containers;
+    opens alrosa.staa.gatekeeper.containers to javafx.fxml;
 }
