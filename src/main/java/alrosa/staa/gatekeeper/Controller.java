@@ -1,8 +1,7 @@
 package alrosa.staa.gatekeeper;
 
-import alrosa.staa.gatekeeper.objects.Direction;
-import alrosa.staa.gatekeeper.objects.Global;
-import alrosa.staa.gatekeeper.objects.MainSystem;
+import alrosa.staa.gatekeeper.objects.Computer;
+import alrosa.staa.gatekeeper.objects.MainObject;
 import alrosa.staa.gatekeeper.objects.Server;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +20,10 @@ public class Controller implements Initializable {
     private AnchorPane anchorPane = new AnchorPane();
     //Добавялем вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
+    //Добавляем главную ветку дерева
+    private final TreeItem<MainObject> mainSystem = new TreeItem<>(new Server());
+    //Добавляем корень дерева
+    private final TreeView root = new TreeView(mainSystem);
     //Добавляем верхнее окно
     private final AnchorPane windowUp = new AnchorPane();
     //Добавляем нижнее окно
@@ -42,11 +45,11 @@ public class Controller implements Initializable {
     MenuItem menuAdd = new MenuItem("Добавить");
     //Создание кнопки "Удалить"
     MenuItem menuDelete = new MenuItem("Удалить");
-    //Добавляем главную ветку дерева
-    private final TreeItem<Global> mainSystem = new TreeItem<Global>(new MainSystem("Главный"));
-    //Добавляем корень дерева
-    private final TreeView root = new TreeView(mainSystem);
 
+    //***********************
+    //Временно
+    TreeItem<String> server = new TreeItem<>("Server");
+    //***********************
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -89,34 +92,24 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
-
+            //Добавляем реакцию на нажатие кнопки "Добавить"
+            menuAdd.setOnAction(event -> {
+                //Временно
+            });
+            //Добавляем реакцию на нажатие кнопки "Удалить"
+            menuDelete.setOnAction(event -> {
+                //Временно
+            });
             //Временно
             root.setOnMouseClicked(event -> {
-               TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
-               // Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
-               if (selectedItem != null && event.getButton() == MouseButton.SECONDARY) {
-                   // Получаем значение выбранного элемента
-                   Direction value = selectedItem.getValue().getDirection();
-                   //Добавляем реакцию на нажатие кнопки "Добавить"
-                   menuAdd.setOnAction(event1 -> {
-                       //Временно
-                       switch(value) {
-                           case MAINSYSTEM: TreeItem<Global> server = new TreeItem<Global>(new Server("СТ АА"));
-                                            mainSystem.getChildren().addAll(server);
-                                            break;
-                           default: System.out.println("Selected value: " + value);
-                       }
-                   });
-                   //Добавляем реакцию на нажатие кнопки "Удалить"
-                   menuDelete.setOnAction(event1 -> {
-                       //Временно
-                       switch(value) {
-                           case SERVER: mainSystem.getChildren().remove(selectedItem);
-                               break;
-                           default: System.out.println("Selected value: " + value);
-                       }
-                   });
-                }
+           //     TreeItem<Server> selectedItem = root.getSelectionModel().getSelectedItem();
+                // Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
+          //      if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
+                    // Получите значение выбранного элемента
+                  //  String value = selectedItem.getValue();
+                    // Выведите значение в консоль или выполните другие нужные операции
+                 //   System.out.println("The element is selected : " + value);
+            //    }
             });
     }
 }
