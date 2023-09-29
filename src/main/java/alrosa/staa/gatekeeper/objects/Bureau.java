@@ -1,7 +1,8 @@
 package alrosa.staa.gatekeeper.objects;
 
-public class Bureau extends MainObject {
+public class Bureau extends Global {
     private String name;
+    private Direction direction = Direction.BUREAU;
 
     public Bureau() {
         this.name = "Бюро";
@@ -17,7 +18,10 @@ public class Bureau extends MainObject {
     public void setName(String name) {
         this.name = name;
     }
-
+    @Override
+    public Direction getDirection() {
+        return this.direction;
+    }
     @Override
     public String toString() {
         return getName();

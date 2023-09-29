@@ -1,13 +1,15 @@
 package alrosa.staa.gatekeeper.objects;
 
-public abstract class MainObject {
+public class MainSystem extends Global {
     private String name;
 
-    public MainObject(String name) {
+    private Direction direction = Direction.MAINSYSTEM;
+
+    public MainSystem(String name) {
         this.name = name;
     }
 
-    public MainObject() {
+    public MainSystem() {
         this.name = "Главный";
     }
 
@@ -17,6 +19,10 @@ public abstract class MainObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+    @Override
+    public Direction getDirection() {
+        return this.direction;
     }
 
     @Override

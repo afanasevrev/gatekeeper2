@@ -1,8 +1,10 @@
 package alrosa.staa.gatekeeper.objects;
 
-public class Computer extends MainObject {
+public class Computer extends Global {
     private String name;
     private String ipAddress;
+
+    private Direction direction = Direction.COMPUTER;
 
     public Computer() {
         this.name = "Компьютер";
@@ -31,6 +33,10 @@ public class Computer extends MainObject {
 
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
+    }
+    @Override
+    public Direction getDirection() {
+        return this.direction;
     }
 
     @Override

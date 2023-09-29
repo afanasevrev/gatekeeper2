@@ -1,9 +1,11 @@
 package alrosa.staa.gatekeeper.objects;
 
-public class ControlPanel extends MainObject {
+public class ControlPanel extends Global {
     private String name;
     private String ipAddress;
     private int port;
+
+    private Direction direction = Direction.CONTROLPANEL;
     public ControlPanel() {
         this.name = "Контроллер";
         this.ipAddress = "0.0.0.0";
@@ -46,7 +48,10 @@ public class ControlPanel extends MainObject {
     public void setPort(int port) {
         this.port = port;
     }
-
+    @Override
+    public Direction getDirection() {
+        return this.direction;
+    }
     @Override
     public String toString() {
         return getName();

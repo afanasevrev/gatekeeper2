@@ -1,8 +1,10 @@
 package alrosa.staa.gatekeeper.objects;
 
-public class Server extends MainObject {
+public class Server extends Global {
     private String name;
     private String ipAddress;
+
+    private Direction direction = Direction.SERVER;
     
     public Server() {
         this.name = "Сервер";
@@ -26,14 +28,16 @@ public class Server extends MainObject {
     public void setName(String name) {
         this.name = name;
     }
+    public String getName() {
+        return getName();
+    }
+    @Override
+    public Direction getDirection() {
+        return this.direction;
+    }
 
     @Override
     public String toString() {
-
-        return name;
-    }
-
-    public String getName() {
         return getName();
     }
 }
