@@ -1,8 +1,6 @@
 package alrosa.staa.gatekeeper;
 
-import alrosa.staa.gatekeeper.objects.Computer;
-import alrosa.staa.gatekeeper.objects.MainObject;
-import alrosa.staa.gatekeeper.objects.Server;
+import alrosa.staa.gatekeeper.objects.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
@@ -20,10 +18,7 @@ public class Controller implements Initializable {
     private AnchorPane anchorPane = new AnchorPane();
     //Добавялем вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
-    //Добавляем главную ветку дерева
-    private final TreeItem<MainObject> mainSystem = new TreeItem<>(new Server());
-    //Добавляем корень дерева
-    private final TreeView root = new TreeView(mainSystem);
+
     //Добавляем верхнее окно
     private final AnchorPane windowUp = new AnchorPane();
     //Добавляем нижнее окно
@@ -46,10 +41,10 @@ public class Controller implements Initializable {
     //Создание кнопки "Удалить"
     MenuItem menuDelete = new MenuItem("Удалить");
 
-    //***********************
-    //Временно
-    TreeItem<String> server = new TreeItem<>("Server");
-    //***********************
+    //Добавляем главную ветку дерева
+    private final TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
+    //Добавляем корень дерева
+    private final TreeView root = new TreeView(mainSystem);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -102,14 +97,14 @@ public class Controller implements Initializable {
             });
             //Временно
             root.setOnMouseClicked(event -> {
-           //     TreeItem<Server> selectedItem = root.getSelectionModel().getSelectedItem();
-                // Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
-          //      if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
+                TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
+                // Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
+                if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
                     // Получите значение выбранного элемента
-                  //  String value = selectedItem.getValue();
+                    Direction value = selectedItem.getValue().getDirection();
                     // Выведите значение в консоль или выполните другие нужные операции
-                 //   System.out.println("The element is selected : " + value);
-            //    }
+                    System.out.println("The element is selected : " + value);
+                }
             });
     }
 }
