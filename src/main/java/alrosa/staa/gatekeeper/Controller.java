@@ -87,23 +87,32 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
-            //Добавляем реакцию на нажатие кнопки "Добавить"
-            menuAdd.setOnAction(event -> {
-                //Временно
-            });
-            //Добавляем реакцию на нажатие кнопки "Удалить"
-            menuDelete.setOnAction(event -> {
-                //Временно
-            });
+
             //Временно
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
                 // Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
-                if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
-                    // Получите значение выбранного элемента
+                if (selectedItem != null && event.getButton() == MouseButton.SECONDARY) {
+                    // Получим enum выбранного элемента
                     Direction value = selectedItem.getValue().getDirection();
-                    // Выведите значение в консоль или выполните другие нужные операции
-                    System.out.println("The element is selected : " + value);
+                    //Добавляем реакцию на нажатие кнопки "Добавить"
+                    menuAdd.setOnAction(event1 -> {
+                        switch (value) {
+                            case MAINSYSTEM:
+                                TreeItem<Global> server = new TreeItem<Global>(new Server());
+                                selectedItem.getChildren().add(server);
+                            default: System.out.println("Selected item: " + value);
+                        }
+                    });
+                    //Добавляем реакцию на нажатие кнопки "Удалить"
+                    menuDelete.setOnAction(event1 -> {
+                        switch (value) {
+                            case SERVER:
+                                selectedItem.getParent().getChildren().remove(selectedItem);
+                            default: System.out.println("Selected item:" + value);
+                        }
+                        //Временно
+                    });
                 }
             });
     }
