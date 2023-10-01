@@ -32,8 +32,9 @@ public class Controller implements Initializable {
     //Указываем путь к главному рисунку
     private final Image imageMain = new Image("main.png");
     private final ImageView imageViewMain = new ImageView(imageMain);
-    //Добавялем круг, чтоб поместить туда наш рисунок
-    private final Circle circleMain = new Circle();
+    //Указываем путь к рисунку к объекту Сервер
+    private Image imageServer = new Image("server.png");
+    private ImageView imageViewServer = new ImageView(imageServer);
     //Добавляем контекстное меню
     ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -45,6 +46,8 @@ public class Controller implements Initializable {
     private final TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
     //Добавляем корень дерева
     private final TreeView root = new TreeView(mainSystem);
+    //Добавляем сервер
+    //private TreeItem<Global> server = new TreeItem<>(new Server());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -68,14 +71,13 @@ public class Controller implements Initializable {
             AnchorPane.setTopAnchor(splitHorizontal, 0.0);
             //К верхнему окну добавляем горизонтальный сплиттер
             windowUp.getChildren().addAll(splitHorizontal);
-            //К горизонтальному спиттеру добавляем два окна, для дерева и объектов
+            //К горизонтальному сплиттеру добавляем два окна, для дерева и объектов
             splitHorizontal.getItems().addAll(windowTree, windowObjects);
-            //Добавляем в круг наш рисунок
-            imageViewMain.setFitHeight(30);
-            imageViewMain.setFitWidth(30);
-            circleMain.setRadius(40);
-            imageViewMain.setClip(circleMain);
+            //Добавляем рисунок в наш главный объект
+            imageViewMain.setFitHeight(25);
+            imageViewMain.setFitWidth(25);
             mainSystem.setGraphic(imageViewMain);
+
             //Растягиваем наше дерево в окне так, чтобы он растягивался вместе с окном
             AnchorPane.setBottomAnchor(root, 0.0);
             AnchorPane.setLeftAnchor(root, 0.0);
@@ -99,7 +101,7 @@ public class Controller implements Initializable {
                     menuAdd.setOnAction(event1 -> {
                         switch (value) {
                             case MAINSYSTEM:
-                                TreeItem<Global> server = new TreeItem<Global>(new Server());
+                                TreeItem server = new TreeItem<Global>(new Server(imageViewServer, imageMain));
                                 selectedItem.getChildren().add(server);
                             default: System.out.println("Selected item: " + value);
                         }
@@ -111,7 +113,6 @@ public class Controller implements Initializable {
                                 selectedItem.getParent().getChildren().remove(selectedItem);
                             default: System.out.println("Selected item:" + value);
                         }
-                        //Временно
                     });
                 }
             });
