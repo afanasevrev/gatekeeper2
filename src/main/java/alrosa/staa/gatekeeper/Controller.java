@@ -101,7 +101,7 @@ public class Controller implements Initializable {
                     menuAdd.setOnAction(event1 -> {
                         switch (value) {
                             case MAINSYSTEM:
-                                TreeItem server = new TreeItem<Global>(new Server(imageViewServer, imageMain));
+                                TreeItem server = new TreeItem<Global>(new Server());
                                 selectedItem.getChildren().add(server);
                             default: System.out.println("Selected item: " + value);
                         }
