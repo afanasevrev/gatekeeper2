@@ -3,9 +3,7 @@ package alrosa.staa.gatekeeper.objects;
 public class Server extends Global {
     private String name;
     private String ipAddress;
-
     private Direction direction = Direction.SERVER;
-    
     public Server() {
         this.name = "Сервер";
         this.ipAddress = "0.0.0.0";
@@ -24,7 +22,6 @@ public class Server extends Global {
     public String getIpAddress() {
         return ipAddress;
     }
-
     public void setName(String name) {
         this.name = name;
     }
