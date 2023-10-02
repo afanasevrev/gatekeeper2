@@ -1,9 +1,5 @@
 package alrosa.staa.gatekeeper.objects;
 
-import javafx.scene.control.TreeItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 public class Server extends Global {
     private String name;
     private String ipAddress;

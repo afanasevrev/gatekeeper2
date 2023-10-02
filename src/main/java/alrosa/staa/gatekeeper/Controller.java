@@ -18,7 +18,6 @@ public class Controller implements Initializable {
     private AnchorPane anchorPane = new AnchorPane();
     //Добавялем вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
-
     //Добавляем верхнее окно
     private final AnchorPane windowUp = new AnchorPane();
     //Добавляем нижнее окно
@@ -36,18 +35,15 @@ public class Controller implements Initializable {
     private Image imageServer = new Image("server.png");
     private ImageView imageViewServer = new ImageView(imageServer);
     //Добавляем контекстное меню
-    ContextMenu contextMenu = new ContextMenu();
+    private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
-    MenuItem menuAdd = new MenuItem("Добавить");
+    private MenuItem menuAdd = new MenuItem("Добавить");
     //Создание кнопки "Удалить"
-    MenuItem menuDelete = new MenuItem("Удалить");
-
+    private MenuItem menuDelete = new MenuItem("Удалить");
     //Добавляем главную ветку дерева
     private final TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
     //Добавляем корень дерева
     private final TreeView root = new TreeView(mainSystem);
-    //Добавляем сервер
-    //private TreeItem<Global> server = new TreeItem<>(new Server());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -77,7 +73,6 @@ public class Controller implements Initializable {
             imageViewMain.setFitHeight(25);
             imageViewMain.setFitWidth(25);
             mainSystem.setGraphic(imageViewMain);
-
             //Растягиваем наше дерево в окне так, чтобы он растягивался вместе с окном
             AnchorPane.setBottomAnchor(root, 0.0);
             AnchorPane.setLeftAnchor(root, 0.0);
@@ -89,7 +84,6 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
-
             //Временно
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
