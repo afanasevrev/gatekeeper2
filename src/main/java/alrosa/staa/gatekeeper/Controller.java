@@ -2,6 +2,7 @@ package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.MainContainer;
 import alrosa.staa.gatekeeper.objects.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +23,16 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
+    @FXML
+    private Button buttonCreate = new Button();
+    @FXML
+    private Button buttonCancel = new Button();
+    @FXML
+    private ToggleButton toggleButtonServer = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonComputer = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonBureau = new ToggleButton();
     //Добавялем вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем верхнее окно
@@ -111,8 +122,6 @@ public class Controller implements Initializable {
                                     throw new RuntimeException(e);
                                 }
                                 break;
-                                //TreeItem server = new TreeItem<Global>(new Server());
-                                //selectedItem.getChildren().add(server);
                             default: System.out.println("Selected item: " + value);
                         }
                     });
@@ -127,5 +136,16 @@ public class Controller implements Initializable {
                     });
                 }
             });
+    }
+
+    @FXML
+    public void isPressedButtonCansel(ActionEvent event) {
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
+    }
+    @FXML
+    public void isPressedButtonCreate(ActionEvent event) {
+        TreeItem server = new TreeItem<Global>(new Server());
+        mainSystem.getChildren().add(server);
     }
 }

@@ -12,17 +12,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 public class MainContainer extends Application {
-    @FXML
-    private Button buttonCreate = new Button();
-    @FXML
-    private Button buttonCancel = new Button();
-    @FXML
-    private ToggleButton toggleButtonServer = new ToggleButton();
-    @FXML
-    private ToggleButton toggleButtonComputer = new ToggleButton();
-    @FXML
-    private ToggleButton toggleButtonBureau = new ToggleButton();
-
     @Override
     public void start(Stage stage) throws Exception {
         try {
@@ -34,13 +23,5 @@ public class MainContainer extends Application {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void isPressedButtonCansel(ActionEvent event) {
-        Stage stage = (Stage) buttonCancel.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    public void isPressedButtonCreate(ActionEvent event) {
-        if (toggleButtonServer.isSelected()) System.out.println("Pressed toggleButtonServer");
-    }
+
 }
