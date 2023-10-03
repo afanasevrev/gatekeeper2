@@ -53,6 +53,7 @@ public class Controller implements Initializable {
 
     //Создаем экземпляр главного контейнера
     MainContainer mainContainer = new MainContainer();
+    Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -105,7 +106,7 @@ public class Controller implements Initializable {
                         switch (value) {
                             case MAINSYSTEM:
                                 try {
-                                    mainContainer.start(new Stage());
+                                    mainContainer.start(stage);
                                 } catch (Exception e) {
                                     throw new RuntimeException(e);
                                 }
