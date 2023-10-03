@@ -1,15 +1,21 @@
 package alrosa.staa.gatekeeper;
 
+import alrosa.staa.gatekeeper.containers.MainContainer;
 import alrosa.staa.gatekeeper.objects.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,6 +50,9 @@ public class Controller implements Initializable {
     private final TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
     //Добавляем корень дерева
     private final TreeView root = new TreeView(mainSystem);
+
+    //Создаем экземпляр главного контейнера
+    MainContainer mainContainer = new MainContainer();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -84,7 +93,7 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
-            //Временно
+            //Добавляем реакции на нажите корня дерева
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
                 // Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
@@ -95,8 +104,14 @@ public class Controller implements Initializable {
                     menuAdd.setOnAction(event1 -> {
                         switch (value) {
                             case MAINSYSTEM:
-                                TreeItem server = new TreeItem<Global>(new Server());
-                                selectedItem.getChildren().add(server);
+                                try {
+                                    mainContainer.start(new Stage());
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
+                                //TreeItem server = new TreeItem<Global>(new Server());
+                                //selectedItem.getChildren().add(server);
                             default: System.out.println("Selected item: " + value);
                         }
                     });
@@ -105,7 +120,8 @@ public class Controller implements Initializable {
                         switch (value) {
                             case SERVER:
                                 selectedItem.getParent().getChildren().remove(selectedItem);
-                            default: System.out.println("Selected item:" + value);
+                                break;
+                            default: System.out.println("Selected item: " + value);
                         }
                     });
                 }
