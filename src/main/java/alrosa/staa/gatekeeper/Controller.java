@@ -48,9 +48,7 @@ public class Controller implements Initializable {
     //Указываем путь к главному рисунку
     private final Image imageMain = new Image("main.png");
     private final ImageView imageViewMain = new ImageView(imageMain);
-    //Указываем путь к рисунку к объекту Сервер
-    private Image imageServer = new Image("server.png");
-    private ImageView imageViewServer = new ImageView(imageServer);
+    private final Image imageServer = new Image("server.png");
     //Добавляем контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -149,6 +147,11 @@ public class Controller implements Initializable {
     @FXML
     public void isPressedButtonCreate(ActionEvent event) {
         TreeItem server = new TreeItem<Global>(new Server());
-        item.getChildren().addAll(server);
+
+        ImageView imageViewServer = new ImageView(imageServer);
+        imageViewServer.setFitWidth(25);
+        imageViewServer.setFitHeight(25);
+        server.setGraphic(imageViewServer);
+        item.getChildren().add(server);
     }
 }
