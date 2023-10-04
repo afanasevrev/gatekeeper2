@@ -58,9 +58,11 @@ public class Controller implements Initializable {
     //Создание кнопки "Удалить"
     private MenuItem menuDelete = new MenuItem("Удалить");
     //Добавляем главную ветку дерева
-    private final TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
+    private TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
     //Добавляем корень дерева
-    private final TreeView root = new TreeView(mainSystem);
+    private TreeView root = new TreeView(mainSystem);
+    //Создадим статическую ветку
+    private static TreeItem<Global> item;
 
     //Создаем экземпляр главного контейнера
     MainContainer mainContainer = new MainContainer();
@@ -105,7 +107,7 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
-            //Добавляем реакции на нажите корня дерева
+            //Добавляем реакции на нажатие корня дерева
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
                 // Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
@@ -116,6 +118,7 @@ public class Controller implements Initializable {
                     menuAdd.setOnAction(event1 -> {
                         switch (value) {
                             case MAINSYSTEM:
+                                item = selectedItem;
                                 try {
                                     mainContainer.start(stage);
                                 } catch (Exception e) {
@@ -146,6 +149,6 @@ public class Controller implements Initializable {
     @FXML
     public void isPressedButtonCreate(ActionEvent event) {
         TreeItem server = new TreeItem<Global>(new Server());
-        mainSystem.getChildren().add(server);
+        item.getChildren().addAll(server);
     }
 }
