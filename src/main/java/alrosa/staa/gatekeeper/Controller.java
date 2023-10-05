@@ -33,7 +33,7 @@ public class Controller implements Initializable {
     private ToggleButton toggleButtonComputer = new ToggleButton();
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();
-    //Добавялем вертикальный сплиттер
+    //Добавим вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем верхнее окно
     private final AnchorPane windowUp = new AnchorPane();
@@ -48,8 +48,13 @@ public class Controller implements Initializable {
     //Указываем путь к главному рисунку
     private final Image imageMain = new Image("main.png");
     private final ImageView imageViewMain = new ImageView(imageMain);
+    //Указываем путь к рисунку сервер
     private final Image imageServer = new Image("server.png");
-    //Добавляем контекстное меню
+    //Указываем путь к рисунку компьютер
+    private final Image imageComputer = new Image("computer.png");
+    //Указываем путь к рисунку бюро
+    private final Image imageBureau = new Image("bureau.png");
+    //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
     private MenuItem menuAdd = new MenuItem("Добавить");
@@ -63,8 +68,8 @@ public class Controller implements Initializable {
     private static TreeItem<Global> item;
 
     //Создаем экземпляр главного контейнера
-    MainContainer mainContainer = new MainContainer();
-    Stage stage = new Stage();
+    private MainContainer mainContainer = new MainContainer();
+    private Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -108,9 +113,9 @@ public class Controller implements Initializable {
             //Добавляем реакции на нажатие корня дерева
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
-                // Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
+                //Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
                 if (selectedItem != null && event.getButton() == MouseButton.SECONDARY) {
-                    // Получим enum выбранного элемента
+                    //Получим enum выбранного элемента
                     Direction value = selectedItem.getValue().getDirection();
                     //Добавляем реакцию на нажатие кнопки "Добавить"
                     menuAdd.setOnAction(event1 -> {
@@ -130,6 +135,8 @@ public class Controller implements Initializable {
                     menuDelete.setOnAction(event1 -> {
                         switch (value) {
                             case SERVER:
+                            case COMPUTER:
+                            case BUREAU:
                                 selectedItem.getParent().getChildren().remove(selectedItem);
                                 break;
                             default: System.out.println("Selected item: " + value);
@@ -146,12 +153,30 @@ public class Controller implements Initializable {
     }
     @FXML
     public void isPressedButtonCreate(ActionEvent event) {
-        TreeItem server = new TreeItem<Global>(new Server());
-
-        ImageView imageViewServer = new ImageView(imageServer);
-        imageViewServer.setFitWidth(25);
-        imageViewServer.setFitHeight(25);
-        server.setGraphic(imageViewServer);
-        item.getChildren().add(server);
+        if (toggleButtonServer.isSelected()) {
+            TreeItem server = new TreeItem<Global>(new Server());
+            ImageView imageViewServer = new ImageView(imageServer);
+            imageViewServer.setFitWidth(25);
+            imageViewServer.setFitHeight(25);
+            server.setGraphic(imageViewServer);
+            item.getChildren().add(server);
+        } else if (toggleButtonComputer.isSelected()) {
+            TreeItem computer = new TreeItem<Global>(new Computer());
+            ImageView imageViewComputer = new ImageView(imageComputer);
+            imageViewComputer.setFitWidth(25);
+            imageViewComputer.setFitHeight(25);
+            computer.setGraphic(imageViewComputer);
+            item.getChildren().add(computer);
+        } else if (toggleButtonBureau.isSelected()) {
+            TreeItem bureau = new TreeItem<Global>(new Bureau());
+            ImageView imageViewBureau = new ImageView(imageBureau);
+            imageViewBureau.setFitWidth(25);
+            imageViewBureau.setFitHeight(25);
+            bureau.setGraphic(imageViewBureau);
+            item.getChildren().add(bureau);
+        }
+        else {
+            System.out.println("NE VYBRAN OJECT");
+        }
     }
 }
