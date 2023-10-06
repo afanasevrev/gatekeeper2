@@ -1,5 +1,6 @@
 package alrosa.staa.gatekeeper;
 
+import alrosa.staa.gatekeeper.containers.CardReaderContainer;
 import alrosa.staa.gatekeeper.containers.MainContainer;
 import alrosa.staa.gatekeeper.containers.PercoContainer;
 import alrosa.staa.gatekeeper.containers.ServerContainer;
@@ -8,6 +9,7 @@ import alrosa.staa.gatekeeper.objects.computer.Computer;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
+import alrosa.staa.gatekeeper.objects.server.perco.CardReader;
 import alrosa.staa.gatekeeper.objects.server.Server;
 import alrosa.staa.gatekeeper.objects.server.perco.PERCoC01;
 import alrosa.staa.gatekeeper.objects.server.perco.Perco;
@@ -42,6 +44,9 @@ public class Controller implements Initializable {
     private ToggleButton toggleButtonPerco = new ToggleButton();
     @FXML
     private ToggleButton toggleButtonPERCoC01 = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonCardReader = new ToggleButton();
+
     //Добавим вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем верхнее окно
@@ -67,6 +72,8 @@ public class Controller implements Initializable {
     private final Image imagePerco = new Image("perco.png");
     //Указываем путь к рисунку PERCoC01
     private final Image imagePERCoC01 = new Image("PERCoC01.png");
+    //Указываем путь к рисунку cardreader
+    private final Image imageCardReader = new Image("cardreader.png");
     //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -86,6 +93,8 @@ public class Controller implements Initializable {
     private ServerContainer serverContainer = new ServerContainer();
     //Создаем экземпляр для контейнера оборудования Perco
     private PercoContainer percoContainer = new PercoContainer();
+    //Создаем экземпляр для контейнера считывателя
+    private CardReaderContainer cardReader = new CardReaderContainer();
     private Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -160,6 +169,15 @@ public class Controller implements Initializable {
                                 } catch (Exception e) {
                                     throw new RuntimeException(e);
                                 }
+                                break;
+                            case PERCOC01:
+                                item = selectedItem;
+                                try {
+                                    cardReader.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
                             default: System.out.println("Selected item: " + value);
                         }
                     });
@@ -171,6 +189,7 @@ public class Controller implements Initializable {
                             case BUREAU:
                             case PERCO:
                             case PERCOC01:
+                            case CARDREADER:
                                 selectedItem.getParent().getChildren().remove(selectedItem);
                                 break;
                             default: System.out.println("Selected item: " + value);
@@ -222,6 +241,13 @@ public class Controller implements Initializable {
             imageViewPerco.setFitHeight(25);
             percoc01.setGraphic(imageViewPerco);
             item.getChildren().add(percoc01);
+        } else if (toggleButtonCardReader.isSelected()) {
+            TreeItem cardReader = new TreeItem<Global>(new CardReader());
+            ImageView imageViewCardReader = new ImageView(imageCardReader);
+            imageViewCardReader.setFitWidth(25);
+            imageViewCardReader.setFitHeight(25);
+            cardReader.setGraphic(imageViewCardReader);
+            item.getChildren().add(cardReader);
         }
         else {
             System.out.println("NE VYBRAN OBJECT");
