@@ -1,12 +1,16 @@
 package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.MainContainer;
+import alrosa.staa.gatekeeper.containers.PercoContainer;
+import alrosa.staa.gatekeeper.containers.ServerContainer;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
 import alrosa.staa.gatekeeper.objects.computer.Computer;
-import alrosa.staa.gatekeeper.objects.global.Direction;
+import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
 import alrosa.staa.gatekeeper.objects.server.Server;
+import alrosa.staa.gatekeeper.objects.server.perco.PERCoC01;
+import alrosa.staa.gatekeeper.objects.server.perco.Perco;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,6 +38,10 @@ public class Controller implements Initializable {
     private ToggleButton toggleButtonComputer = new ToggleButton();
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonPerco = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonPERCoC01 = new ToggleButton();
     //Добавим вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем верхнее окно
@@ -55,6 +63,10 @@ public class Controller implements Initializable {
     private final Image imageComputer = new Image("computer.png");
     //Указываем путь к рисунку бюро
     private final Image imageBureau = new Image("bureau.png");
+    //Указываем путь к рисунку perco
+    private final Image imagePerco = new Image("perco.png");
+    //Указываем путь к рисунку PERCoC01
+    private final Image imagePERCoC01 = new Image("PERCoC01.png");
     //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -70,6 +82,10 @@ public class Controller implements Initializable {
 
     //Создаем экземпляр главного контейнера
     private MainContainer mainContainer = new MainContainer();
+    //Создаем экземпляр для серверного контейнера
+    private ServerContainer serverContainer = new ServerContainer();
+    //Создаем экземпляр для контейнера оборудования Perco
+    private PercoContainer percoContainer = new PercoContainer();
     private Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -129,6 +145,21 @@ public class Controller implements Initializable {
                                     throw new RuntimeException(e);
                                 }
                                 break;
+                            case SERVER:
+                                item = selectedItem;
+                                try {
+                                    serverContainer.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
+                            case PERCO:
+                                item = selectedItem;
+                                try {
+                                    percoContainer.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
                             default: System.out.println("Selected item: " + value);
                         }
                     });
@@ -138,12 +169,15 @@ public class Controller implements Initializable {
                             case SERVER:
                             case COMPUTER:
                             case BUREAU:
+                            case PERCO:
+                            case PERCOC01:
                                 selectedItem.getParent().getChildren().remove(selectedItem);
                                 break;
                             default: System.out.println("Selected item: " + value);
                         }
                     });
                 }
+
             });
     }
     @FXML
@@ -174,6 +208,20 @@ public class Controller implements Initializable {
             imageViewBureau.setFitHeight(25);
             bureau.setGraphic(imageViewBureau);
             item.getChildren().add(bureau);
+        } else if (toggleButtonPerco.isSelected()) {
+            TreeItem perco = new TreeItem<Global>(new Perco());
+            ImageView imageViewPerco = new ImageView(imagePerco);
+            imageViewPerco.setFitWidth(25);
+            imageViewPerco.setFitHeight(25);
+            perco.setGraphic(imageViewPerco);
+            item.getChildren().add(perco);
+        } else if (toggleButtonPERCoC01.isSelected()) {
+            TreeItem percoc01 = new TreeItem<Global>(new PERCoC01());
+            ImageView imageViewPerco = new ImageView(imagePERCoC01);
+            imageViewPerco.setFitWidth(25);
+            imageViewPerco.setFitHeight(25);
+            percoc01.setGraphic(imageViewPerco);
+            item.getChildren().add(percoc01);
         }
         else {
             System.out.println("NE VYBRAN OBJECT");

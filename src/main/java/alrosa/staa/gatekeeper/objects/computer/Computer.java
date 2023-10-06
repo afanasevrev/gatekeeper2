@@ -1,6 +1,6 @@
 package alrosa.staa.gatekeeper.objects.computer;
 
-import alrosa.staa.gatekeeper.objects.global.Direction;
+import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class Computer extends Global {

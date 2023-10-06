@@ -7,12 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ServerContainer extends Application {
+public class PercoContainer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Parent fxmlServerContainer = FXMLLoader.load(GateKeeper.class.getResource("servercontainer.fxml"));
-            Scene scene = new Scene(fxmlServerContainer, 210, 165);
+            Parent fxmlPercoContainer = FXMLLoader.load(GateKeeper.class.getResource("percocontainer.fxml"));
+            Scene scene = new Scene(fxmlPercoContainer, 210, 165);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

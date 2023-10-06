@@ -1,6 +1,6 @@
 package alrosa.staa.gatekeeper.objects.bureau;
 
-import alrosa.staa.gatekeeper.objects.global.Direction;
+import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class Bureau extends Global {

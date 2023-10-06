@@ -1,12 +1,12 @@
 package alrosa.staa.gatekeeper.objects.server.perco;
-import alrosa.staa.gatekeeper.objects.global.Direction;
+import alrosa.staa.gatekeeper.objects.Direction;
 public class PERCoC01 extends Perco {
     private String name;
     private String ipAddress;
     private int port;
-    private Direction direction = Direction.CONTROLPANEL;
+    private Direction direction = Direction.PERCOC01;
     public PERCoC01() {
-        this.name = "Контроллер";
+        this.name = "Контроллер PERCo-C01";
         this.ipAddress = "0.0.0.0";
         this.port = 8080;
     }

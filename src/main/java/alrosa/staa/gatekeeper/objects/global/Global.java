@@ -1,5 +1,7 @@
 package alrosa.staa.gatekeeper.objects.global;
 
+import alrosa.staa.gatekeeper.objects.Direction;
+
 public abstract class Global {
     private String name;
 
