@@ -1,4 +1,4 @@
-package alrosa.staa.gatekeeper.objects;
+package alrosa.staa.gatekeeper.objects.global;
 
 public abstract class Global {
     private String name;

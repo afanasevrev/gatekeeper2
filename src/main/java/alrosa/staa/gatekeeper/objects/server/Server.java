@@ -1,4 +1,7 @@
-package alrosa.staa.gatekeeper.objects;
+package alrosa.staa.gatekeeper.objects.server;
+
+import alrosa.staa.gatekeeper.objects.global.Direction;
+import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class Server extends Global {
     private String name;

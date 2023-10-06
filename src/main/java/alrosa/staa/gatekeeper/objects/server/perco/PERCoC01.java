@@ -1,27 +1,26 @@
-package alrosa.staa.gatekeeper.objects;
-
-public class ControlPanel extends Global {
+package alrosa.staa.gatekeeper.objects.server.perco;
+import alrosa.staa.gatekeeper.objects.global.Direction;
+public class PERCoC01 extends Perco {
     private String name;
     private String ipAddress;
     private int port;
-
     private Direction direction = Direction.CONTROLPANEL;
-    public ControlPanel() {
+    public PERCoC01() {
         this.name = "Контроллер";
         this.ipAddress = "0.0.0.0";
         this.port = 8080;
     }
-    public ControlPanel(String name) {
+    public PERCoC01(String name) {
         this.name = name;
         this.ipAddress = "0.0.0.0";
         this.port = 8080;
     }
-    public ControlPanel(String name, String ipAddress) {
+    public PERCoC01(String name, String ipAddress) {
         this.name = name;
         this.ipAddress = ipAddress;
         this.port = 8080;
     }
-    public ControlPanel(String name, String ipAddress, int port) {
+    public PERCoC01(String name, String ipAddress, int port) {
         this.name = name;
         this.ipAddress = ipAddress;
         this.port = port;
@@ -56,5 +55,4 @@ public class ControlPanel extends Global {
     public String toString() {
         return getName();
     }
-
 }

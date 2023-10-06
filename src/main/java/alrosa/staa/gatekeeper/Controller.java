@@ -1,20 +1,21 @@
 package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.MainContainer;
-import alrosa.staa.gatekeeper.objects.*;
+import alrosa.staa.gatekeeper.objects.bureau.Bureau;
+import alrosa.staa.gatekeeper.objects.computer.Computer;
+import alrosa.staa.gatekeeper.objects.global.Direction;
+import alrosa.staa.gatekeeper.objects.global.Global;
+import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
+import alrosa.staa.gatekeeper.objects.server.Server;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -145,7 +146,6 @@ public class Controller implements Initializable {
                 }
             });
     }
-
     @FXML
     public void isPressedButtonCansel(ActionEvent event) {
         Stage stage = (Stage) buttonCancel.getScene().getWindow();
@@ -176,7 +176,7 @@ public class Controller implements Initializable {
             item.getChildren().add(bureau);
         }
         else {
-            System.out.println("NE VYBRAN OJECT");
+            System.out.println("NE VYBRAN OBJECT");
         }
     }
 }
