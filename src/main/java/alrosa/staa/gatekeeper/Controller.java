@@ -9,7 +9,7 @@ import alrosa.staa.gatekeeper.objects.computer.Computer;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
-import alrosa.staa.gatekeeper.objects.server.perco.CardReader;
+import alrosa.staa.gatekeeper.objects.server.CardReader;
 import alrosa.staa.gatekeeper.objects.server.Server;
 import alrosa.staa.gatekeeper.objects.server.perco.PERCoC01;
 import alrosa.staa.gatekeeper.objects.server.perco.Perco;

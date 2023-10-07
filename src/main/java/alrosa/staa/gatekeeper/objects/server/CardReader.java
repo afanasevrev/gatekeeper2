@@ -1,9 +1,10 @@
-package alrosa.staa.gatekeeper.objects.server.perco;
+package alrosa.staa.gatekeeper.objects.server;
 
 import alrosa.staa.gatekeeper.objects.Direction;
+import alrosa.staa.gatekeeper.objects.server.Server;
 
 
-public class CardReader extends PERCoC01 {
+public class CardReader extends Server {
     private String name;
     private Direction direction = Direction.CARDREADER;
 
