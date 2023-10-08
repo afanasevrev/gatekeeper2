@@ -3,24 +3,22 @@ package alrosa.staa.gatekeeper.objects.global;
 import alrosa.staa.gatekeeper.objects.Direction;
 
 public abstract class Global {
-    private String name;
 
-    public Global() {
-        this.name = "Главный";
-    }
+    public Global() {}
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName();
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public abstract void setName(String name);
 
     public abstract Direction getDirection();
 
-    @Override
-    public String toString() {
-        return getName();
-    }
+    public String getSurname() {
+        return null;
+    };
+    public void setSurname(String surname) {};
+    public String getPatronymic() {
+        return null;
+    };
+    public void setPatronymic(String patronymic) {};
+
 }

@@ -25,9 +25,11 @@ public class Server extends Global {
     public String getIpAddress() {
         return ipAddress;
     }
+    @Override
     public void setName(String name) {
         this.name = name;
     }
+    @Override
     public String getName() {
         return name;
     }
@@ -35,6 +37,8 @@ public class Server extends Global {
     public Direction getDirection() {
         return this.direction;
     }
+
+
     @Override
     public String toString() {
         return getName();

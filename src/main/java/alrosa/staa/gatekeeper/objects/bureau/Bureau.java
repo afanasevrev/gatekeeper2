@@ -17,7 +17,7 @@ public class Bureau extends Global {
     public String getName() {
         return name;
     }
-
+    @Override
     public void setName(String name) {
         this.name = name;
     }
