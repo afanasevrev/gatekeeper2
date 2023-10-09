@@ -3,30 +3,26 @@ package alrosa.staa.gatekeeper.objects.server;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.server.Server;
 
-
 public class CardReader extends Server {
-    private String name;
-    private Direction direction = Direction.CARDREADER;
-
+    private String complete_name;
+    private final Direction direction = Direction.CARDREADER;
     public CardReader() {
-        this.name = "Считыватель";
+        this.complete_name = "Считыватель";
     }
     @Override
-    public String getName() {
-        return this.name;
+    public String getComplete_name() {
+        return this.complete_name;
     }
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setComplete_name(final String complete_name) {
+        this.complete_name = complete_name;
     }
-
     @Override
     public Direction getDirection() {
         return this.direction;
     }
-
     @Override
     public String toString() {
-        return getName();
+        return getComplete_name();
     }
 }

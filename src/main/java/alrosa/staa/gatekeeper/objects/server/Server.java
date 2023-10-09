@@ -4,19 +4,19 @@ import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class Server extends Global {
-    private String name;
+    private String complete_name;
     private String ipAddress;
-    private Direction direction = Direction.SERVER;
+    private final Direction direction = Direction.SERVER;
     public Server() {
-        this.name = "Сервер";
+        this.complete_name = "Сервер";
         this.ipAddress = "0.0.0.0";
     }
-    public Server(String name) {
-        this.name = name;
+    public Server(String complete_name) {
+        this.complete_name = complete_name;
         this.ipAddress = "0.0.0.0";
     }
-    public Server(String name, String ipAddress) {
-        this.name = name;
+    public Server(String complete_name, String ipAddress) {
+        this.complete_name = complete_name;
         this.ipAddress = ipAddress;
     }
     public void setIpAddress(String ipAddress) {
@@ -26,21 +26,20 @@ public class Server extends Global {
         return ipAddress;
     }
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public String getComplete_name() {
+        return complete_name;
     }
     @Override
-    public String getName() {
-        return name;
+    public void setComplete_name(String complete_name) {
+        this.complete_name = complete_name;
     }
     @Override
     public Direction getDirection() {
         return this.direction;
     }
 
-
     @Override
     public String toString() {
-        return getName();
+        return getComplete_name();
     }
 }

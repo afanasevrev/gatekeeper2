@@ -5,54 +5,39 @@ import javafx.scene.image.Image;
 
 public class Woman extends Users {
     private final String gender = "Женский";
-    private String fullname;
+    private String complete_name;
     private String surname;
     private String name;
     private String patronymic;
     private Image photo;
     private final Direction direction = Direction.WOMAN;
     public Woman() {
-        this.fullname = "Человек";
+        this.complete_name = "Человек";
     }
     public Woman(String surname, String name, String patronymic) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
-        this.fullname = surname + " " + name + " " + patronymic;
+        this.complete_name = surname + " " + name + " " + patronymic;
     }
-
     public String getGender() {
         return this.gender;
     }
-
-    public String getFullname() {
-        return this.fullname;
-    }
-
-    public void setFullname(final String fullname) {
-        this.fullname = fullname;
-    }
-
     public String getSurname() {
         return this.surname;
     }
-
     public void setSurname(final String surname) {
         this.surname = surname;
     }
-
     public String getName() {
         return this.name;
     }
-
     public void setName(final String name) {
         this.name = name;
     }
-
     public String getPatronymic() {
         return this.patronymic;
     }
-
     public void setPatronymic(final String patronymic) {
         this.patronymic = patronymic;
     }
@@ -63,12 +48,19 @@ public class Woman extends Users {
         this.photo = photo;
     }
     @Override
+    public String getComplete_name() {
+        return this.complete_name;
+    }
+    @Override
+    public void setComplete_name(String complete_name) {
+        this.complete_name = complete_name;
+    }
+    @Override
     public Direction getDirection() {
         return this.direction;
     }
-
     @Override
     public String toString() {
-        return  fullname;
+        return  getComplete_name();
     }
 }

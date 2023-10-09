@@ -6,9 +6,9 @@ public abstract class Global {
 
     public Global() {}
 
-    public abstract String getName();
+    public abstract String getComplete_name();
 
-    public abstract void setName(String name);
+    public abstract void setComplete_name(String name);
 
     public abstract Direction getDirection();
 

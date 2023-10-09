@@ -37,6 +37,14 @@ public class Controller implements Initializable {
     @FXML
     private ToggleButton toggleButtonServer = new ToggleButton();
     @FXML
+    private void handleToggleHoverServer() {
+        toggleButtonServer.setText("Сервер");
+    }
+    @FXML
+    private void handleToggleExitServer() {
+        toggleButtonServer.setText("");
+    }
+    @FXML
     private ToggleButton toggleButtonComputer = new ToggleButton();
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();

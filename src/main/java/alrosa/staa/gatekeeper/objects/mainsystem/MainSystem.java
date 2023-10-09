@@ -4,19 +4,21 @@ import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class MainSystem extends Global {
-    private String name;
-    private Direction direction = Direction.MAINSYSTEM;
-    public MainSystem(String name) {
-        this.name = name;
+    private String complete_name;
+    private final Direction direction = Direction.MAINSYSTEM;
+    public MainSystem(String complete_name) {
+        this.complete_name = complete_name;
     }
     public MainSystem() {
-        this.name = "Главный";
+        this.complete_name = "Главный";
     }
-    public String getName() {
-        return name;
+    @Override
+    public String getComplete_name() {
+        return this.complete_name;
     }
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public void setComplete_name(String complete_name) {
+        this.complete_name = complete_name;
     }
     @Override
     public Direction getDirection() {
@@ -24,6 +26,6 @@ public class MainSystem extends Global {
     }
     @Override
     public String toString() {
-        return getName();
+        return getComplete_name();
     }
 }

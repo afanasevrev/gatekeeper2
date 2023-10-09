@@ -4,22 +4,22 @@ import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class Bureau extends Global {
-    private String name;
-    private Direction direction = Direction.BUREAU;
+    private String complete_name;
+    private final Direction direction = Direction.BUREAU;
 
     public Bureau() {
-        this.name = "Бюро";
+        this.complete_name = "Бюро";
     }
-    public Bureau(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
+    public Bureau(String complete_name) {
+        this.complete_name = complete_name;
     }
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public String getComplete_name() {
+        return this.complete_name;
+    }
+    @Override
+    public void setComplete_name(String complete_name) {
+        this.complete_name = complete_name;
     }
     @Override
     public Direction getDirection() {
@@ -27,6 +27,6 @@ public class Bureau extends Global {
     }
     @Override
     public String toString() {
-        return getName();
+        return getComplete_name();
     }
 }

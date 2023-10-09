@@ -4,26 +4,23 @@ import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
 
 public class Users extends Bureau {
-    private String name;
-    private Direction direction = Direction.USERS;
+    private String complete_name;
+    private final Direction direction = Direction.USERS;
 
     public Users() {
-        this.name = "Пользователи";
+        this.complete_name = "Пользователи";
     }
-    public Users(String name) {
-        this.name = name;
+    public Users(String complete_name) {
+        this.complete_name = complete_name;
     }
-
     @Override
-    public String getName() {
-        return this.name;
+    public String getComplete_name() {
+        return this.complete_name;
     }
-
     @Override
-    public void setName(final String name) {
-        this.name = name;
+    public void setComplete_name(String complete_name) {
+        this.complete_name = complete_name;
     }
-
     @Override
     public Direction getDirection() {
         return this.direction;
@@ -31,6 +28,6 @@ public class Users extends Bureau {
 
     @Override
     public String toString() {
-        return getName();
+        return getComplete_name();
     }
 }
