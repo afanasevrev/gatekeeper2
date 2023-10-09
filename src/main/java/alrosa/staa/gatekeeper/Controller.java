@@ -28,30 +28,41 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    //Главное окно админского консоля
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
+    //Кнопка добавить
     @FXML
     private Button buttonCreate = new Button();
+    //Кнопка отменить
     @FXML
     private Button buttonCancel = new Button();
+    //Кнопка для выбора сервера
     @FXML
     private ToggleButton toggleButtonServer = new ToggleButton();
+    //При наведении мышки на кнопку, отображается "Сервер"
     @FXML
     private void handleToggleHoverServer() {
         toggleButtonServer.setText("Сервер");
     }
+    //Когда мышь уходит с кнопки, надпись убирается
     @FXML
     private void handleToggleExitServer() {
         toggleButtonServer.setText("");
     }
+    //Кнопка для выбора компьютера
     @FXML
     private ToggleButton toggleButtonComputer = new ToggleButton();
+    //Кнопка для выбора бюро
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();
+    //Кнопка для выбора оборудования Perco
     @FXML
     private ToggleButton toggleButtonPerco = new ToggleButton();
+    //Кнопка для выбора контроллера PERC0-C01
     @FXML
     private ToggleButton toggleButtonPERCoC01 = new ToggleButton();
+    //Кнопка для выбора считывателя
     @FXML
     private ToggleButton toggleButtonCardReader = new ToggleButton();
 
@@ -204,7 +215,6 @@ public class Controller implements Initializable {
                         }
                     });
                 }
-
             });
     }
     @FXML
