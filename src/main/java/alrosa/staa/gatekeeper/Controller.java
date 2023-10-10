@@ -63,7 +63,7 @@ public class Controller implements Initializable {
     private void handleToggleExitComputer() {
         toggleButtonComputer.setText("");
     }
-    private Tooltip tooltipBureau = new Tooltip("Бюро");
+
     //Кнопка для выбора бюро
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();
