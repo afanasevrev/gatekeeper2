@@ -53,6 +53,17 @@ public class Controller implements Initializable {
     //Кнопка для выбора компьютера
     @FXML
     private ToggleButton toggleButtonComputer = new ToggleButton();
+    //При наведении мышки на кнопку, отображается "Компьютер"
+    @FXML
+    private void handleToggleHoverComputer() {
+        toggleButtonComputer.setText("Компьютер");
+    }
+    //Когда мышь уходит с кнопки, надпись убирается
+    @FXML
+    private void handleToggleExitComputer() {
+        toggleButtonComputer.setText("");
+    }
+    private Tooltip tooltipBureau = new Tooltip("Бюро");
     //Кнопка для выбора бюро
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();
@@ -118,6 +129,9 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+            //Добавляем всплывающий текст к кнопке Бюро
+            Tooltip.install(toggleButtonBureau, new Tooltip("Бюро"));
+
             //Привязываем сплиттер к окну так, чтобы он растягивался вместе с окном
             AnchorPane.setBottomAnchor(splitVertical, 0.0);
             AnchorPane.setLeftAnchor(splitVertical, 0.0);
@@ -155,6 +169,7 @@ public class Controller implements Initializable {
             contextMenu.getItems().addAll(menuAdd, menuDelete);
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
+
             //Добавляем реакции на нажатие корня дерева
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
