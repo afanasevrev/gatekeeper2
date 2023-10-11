@@ -40,30 +40,8 @@ public class Controller implements Initializable {
     //Кнопка для выбора сервера
     @FXML
     private ToggleButton toggleButtonServer = new ToggleButton();
-    //При наведении мышки на кнопку, отображается "Сервер"
-    @FXML
-    private void handleToggleHoverServer() {
-        toggleButtonServer.setText("Сервер");
-    }
-    //Когда мышь уходит с кнопки, надпись убирается
-    @FXML
-    private void handleToggleExitServer() {
-        toggleButtonServer.setText("");
-    }
-    //Кнопка для выбора компьютера
     @FXML
     private ToggleButton toggleButtonComputer = new ToggleButton();
-    //При наведении мышки на кнопку, отображается "Компьютер"
-    @FXML
-    private void handleToggleHoverComputer() {
-        toggleButtonComputer.setText("Компьютер");
-    }
-    //Когда мышь уходит с кнопки, надпись убирается
-    @FXML
-    private void handleToggleExitComputer() {
-        toggleButtonComputer.setText("");
-    }
-
     //Кнопка для выбора бюро
     @FXML
     private ToggleButton toggleButtonBureau = new ToggleButton();
@@ -129,9 +107,18 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+            //Добавляем всплывающий текст к кнопке Сервер
+            Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
+            //Добавляем всплывающий текст к кнопке Компьютер
+            Tooltip.install(toggleButtonComputer, new Tooltip("Компьютер"));
             //Добавляем всплывающий текст к кнопке Бюро
             Tooltip.install(toggleButtonBureau, new Tooltip("Бюро"));
-
+            //Добавляем всплывающий текст к кнопке оборудование Perco
+            Tooltip.install(toggleButtonPerco, new Tooltip("Оборудование Perco"));
+            //Добавляем всплывающий текст к кнопке PERCo-C01
+            Tooltip.install(toggleButtonPERCoC01, new Tooltip("Контроллер PERCo-C01"));
+            //Добавялем всплывающий текст к кнопке Считыватель
+            Tooltip.install(toggleButtonCardReader, new Tooltip("Считыватель"));
             //Привязываем сплиттер к окну так, чтобы он растягивался вместе с окном
             AnchorPane.setBottomAnchor(splitVertical, 0.0);
             AnchorPane.setLeftAnchor(splitVertical, 0.0);
