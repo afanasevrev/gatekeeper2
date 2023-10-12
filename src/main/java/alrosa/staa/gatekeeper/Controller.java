@@ -54,7 +54,25 @@ public class Controller implements Initializable {
     //Кнопка для выбора считывателя
     @FXML
     private ToggleButton toggleButtonCardReader = new ToggleButton();
-
+    //Кнопка для выбора сотрудников
+    @FXML
+    private ToggleButton toggleButtonUsers = new ToggleButton();
+    //Кнопка для выбора Администраторов
+    @FXML
+    private ToggleButton toggleButtonAdmins = new ToggleButton();
+    //Кнопка для выбора Операторов
+    @FXML
+    private ToggleButton toggleButtonOperators = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonCards = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonCardsLayouts = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonGlobalAccessLevels = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonPositions = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonOrganizations = new ToggleButton();
     //Добавим вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем верхнее окно
