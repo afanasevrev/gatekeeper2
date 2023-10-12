@@ -1,10 +1,10 @@
 package alrosa.staa.gatekeeper;
 
-import alrosa.staa.gatekeeper.containers.CardReaderContainer;
-import alrosa.staa.gatekeeper.containers.MainContainer;
-import alrosa.staa.gatekeeper.containers.PercoContainer;
-import alrosa.staa.gatekeeper.containers.ServerContainer;
+import alrosa.staa.gatekeeper.containers.*;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
+import alrosa.staa.gatekeeper.objects.bureau.admins.Administrators;
+import alrosa.staa.gatekeeper.objects.bureau.operators.Operators;
+import alrosa.staa.gatekeeper.objects.bureau.users.Users;
 import alrosa.staa.gatekeeper.objects.computer.Computer;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
@@ -100,6 +100,12 @@ public class Controller implements Initializable {
     private final Image imagePERCoC01 = new Image("PERCoC01.png");
     //Указываем путь к рисунку cardreader
     private final Image imageCardReader = new Image("cardreader.png");
+    //Указываем путь к рисунку users
+    private final Image imageUsers = new Image("users.png");
+    //Указываем путь к рисунку admins
+    private final Image imageAdmins = new Image("admins.png");
+    //Указываем путь к рисунку operators
+    private final Image imageOperators = new Image("operators.png");
     //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -112,15 +118,16 @@ public class Controller implements Initializable {
     private TreeView root = new TreeView(mainSystem);
     //Создадим статическую ветку
     private static TreeItem<Global> item;
-
     //Создаем экземпляр главного контейнера
     private MainContainer mainContainer = new MainContainer();
     //Создаем экземпляр для серверного контейнера
     private ServerContainer serverContainer = new ServerContainer();
     //Создаем экземпляр для контейнера оборудования Perco
     private PercoContainer percoContainer = new PercoContainer();
-    //Создаем экземпляр для контейнера считывателя
-    private CardReaderContainer cardReader = new CardReaderContainer();
+    //Создаем экземпляр для контейнера Считывателя
+    private CardReaderContainer cardReaderContainer = new CardReaderContainer();
+    //Создаем экземпляр для контейнера Бюро
+    private BureauContainer bureauContainer = new BureauContainer();
     private Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -212,11 +219,19 @@ public class Controller implements Initializable {
                             case PERCOC01:
                                 item = selectedItem;
                                 try {
-                                    cardReader.start(stage);
+                                    cardReaderContainer.start(stage);
                                 } catch (Exception e) {
                                     throw new RuntimeException(e);
                                 }
                                 break;
+                            case BUREAU:
+                                item = selectedItem;
+                                try {
+                                    bureauContainer.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+
                             default: System.out.println("Selected item: " + value);
                         }
                     });
@@ -286,6 +301,27 @@ public class Controller implements Initializable {
             imageViewCardReader.setFitHeight(25);
             cardReader.setGraphic(imageViewCardReader);
             item.getChildren().add(cardReader);
+        } else if (toggleButtonUsers.isSelected()) {
+            TreeItem users = new TreeItem<Global>(new Users());
+            ImageView imageViewUsers = new ImageView(imageUsers);
+            imageViewUsers.setFitWidth(25);
+            imageViewUsers.setFitHeight(25);
+            users.setGraphic(imageViewUsers);
+            item.getChildren().add(users);
+        } else if (toggleButtonAdmins.isSelected()) {
+            TreeItem admins = new TreeItem<Global>(new Administrators());
+            ImageView imageViewAdmins = new ImageView(imageAdmins);
+            imageViewAdmins.setFitWidth(25);
+            imageViewAdmins.setFitHeight(25);
+            admins.setGraphic(imageViewAdmins);
+            item.getChildren().add(admins);
+        } else if (toggleButtonOperators.isSelected()) {
+            TreeItem operators = new TreeItem<Global>(new Operators());
+            ImageView imageViewOperators = new ImageView(imageOperators);
+            imageViewOperators.setFitWidth(25);
+            imageViewOperators.setFitHeight(25);
+            operators.setGraphic(imageViewOperators);
+            item.getChildren().add(operators);
         }
         else {
             System.out.println("NE VYBRAN OBJECT");
