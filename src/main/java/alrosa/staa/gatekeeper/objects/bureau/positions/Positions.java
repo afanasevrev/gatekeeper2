@@ -8,7 +8,7 @@ public class Positions extends Bureau {
     private final Direction direction = Direction.POSITIONS;
 
     public Positions() {
-        this.complete_name = "Додности";
+        this.complete_name = "Должности";
     }
 
     public Positions(String complete_name) {

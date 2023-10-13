@@ -1,12 +1,17 @@
 package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.*;
+import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
 import alrosa.staa.gatekeeper.objects.bureau.admins.Administrators;
+import alrosa.staa.gatekeeper.objects.bureau.card_layouts.CardLayouts;
+import alrosa.staa.gatekeeper.objects.bureau.cards.Cards;
+import alrosa.staa.gatekeeper.objects.bureau.global_access_levels.GlobalAccessLevels;
 import alrosa.staa.gatekeeper.objects.bureau.operators.Operators;
+import alrosa.staa.gatekeeper.objects.bureau.organizations.Organizations;
+import alrosa.staa.gatekeeper.objects.bureau.positions.Positions;
 import alrosa.staa.gatekeeper.objects.bureau.users.Users;
 import alrosa.staa.gatekeeper.objects.computer.Computer;
-import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
 import alrosa.staa.gatekeeper.objects.server.CardReader;
@@ -66,7 +71,7 @@ public class Controller implements Initializable {
     @FXML
     private ToggleButton toggleButtonCards = new ToggleButton();
     @FXML
-    private ToggleButton toggleButtonCardsLayouts = new ToggleButton();
+    private ToggleButton toggleButtonCardLayouts = new ToggleButton();
     @FXML
     private ToggleButton toggleButtonGlobalAccessLevels = new ToggleButton();
     @FXML
@@ -106,6 +111,16 @@ public class Controller implements Initializable {
     private final Image imageAdmins = new Image("admins.png");
     //Указываем путь к рисунку operators
     private final Image imageOperators = new Image("operators.png");
+    //Указываем путь к рисунку cards
+    private final Image imageCards = new Image("cards.png");
+    //Указываем путь к рисунку макеты карт
+    private final Image imageCardLayouts = new Image("card_layouts.png");
+    //Указываем путь к рисунку global_access_levels
+    private final Image imageGlobalAccessLevels = new Image("global_access_levels.png");
+    //Указываем путь к рисунку positions
+    private final Image imagePositions = new Image("positions.png");
+    //Указываем путь к рисунку organizations
+    private final Image imageOrganizations = new Image("organizations.png");
     //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -144,6 +159,22 @@ public class Controller implements Initializable {
             Tooltip.install(toggleButtonPERCoC01, new Tooltip("Контроллер PERCo-C01"));
             //Добавялем всплывающий текст к кнопке Считыватель
             Tooltip.install(toggleButtonCardReader, new Tooltip("Считыватель"));
+            //Добавляем всплывающий текст к кнопке Пользователи
+            Tooltip.install(toggleButtonUsers, new Tooltip("Пользователи"));
+            //Добавляем всплывающий текст к кнопке Администраторы
+            Tooltip.install(toggleButtonAdmins, new Tooltip("Администраторы"));
+            //Добавляем всплывающий текст к кнопке Операторы
+            Tooltip.install(toggleButtonOperators, new Tooltip("Операторы"));
+            //Добавляем всплывающий текст к кнопке Карты
+            Tooltip.install(toggleButtonCards, new Tooltip("Карты"));
+            //Добавляем всплывающий текст к кнопке Макеты карт
+            Tooltip.install(toggleButtonCardLayouts, new Tooltip("Макеты карт"));
+            //Добавляем всплывающий текст к кнопке Глобальные уровни доступа
+            Tooltip.install(toggleButtonGlobalAccessLevels, new Tooltip("Глобальные уровни доступа"));
+            //Добавляем всплывающий текст к кнопке Должности
+            Tooltip.install(toggleButtonPositions, new Tooltip("Должности"));
+            //Добавляем всплывающий текст к кнопке Организации
+            Tooltip.install(toggleButtonOrganizations, new Tooltip("Организации"));
             //Привязываем сплиттер к окну так, чтобы он растягивался вместе с окном
             AnchorPane.setBottomAnchor(splitVertical, 0.0);
             AnchorPane.setLeftAnchor(splitVertical, 0.0);
@@ -238,15 +269,10 @@ public class Controller implements Initializable {
                     //Добавляем реакцию на нажатие кнопки "Удалить"
                     menuDelete.setOnAction(event1 -> {
                         switch (value) {
-                            case SERVER:
-                            case COMPUTER:
-                            case BUREAU:
-                            case PERCO:
-                            case PERCOC01:
-                            case CARDREADER:
-                                selectedItem.getParent().getChildren().remove(selectedItem);
+                            case MAINSYSTEM:
                                 break;
-                            default: System.out.println("Selected item: " + value);
+                            default: System.out.println("Deleted item: " + selectedItem.getValue().getDirection());
+                                     selectedItem.getParent().getChildren().remove(selectedItem);
                         }
                     });
                 }
@@ -322,6 +348,41 @@ public class Controller implements Initializable {
             imageViewOperators.setFitHeight(25);
             operators.setGraphic(imageViewOperators);
             item.getChildren().add(operators);
+        } else if (toggleButtonCards.isSelected()) {
+            TreeItem cards = new TreeItem<Global>(new Cards());
+            ImageView imageViewCards = new ImageView(imageCards);
+            imageViewCards.setFitWidth(25);
+            imageViewCards.setFitHeight(25);
+            cards.setGraphic(imageViewCards);
+            item.getChildren().add(cards);
+        } else if (toggleButtonCardLayouts.isSelected()) {
+            TreeItem cardLayouts = new TreeItem<Global>(new CardLayouts());
+            ImageView imageViewCardLayouts = new ImageView(imageCardLayouts);
+            imageViewCardLayouts.setFitWidth(25);
+            imageViewCardLayouts.setFitHeight(25);
+            cardLayouts.setGraphic(imageViewCardLayouts);
+            item.getChildren().add(cardLayouts);
+        } else if (toggleButtonGlobalAccessLevels.isSelected()) {
+            TreeItem globalAccessLevels = new TreeItem<Global>(new GlobalAccessLevels());
+            ImageView imageViewGlobalAccesslevels = new ImageView(imageGlobalAccessLevels);
+            imageViewGlobalAccesslevels.setFitWidth(25);
+            imageViewGlobalAccesslevels.setFitHeight(25);
+            globalAccessLevels.setGraphic(imageViewGlobalAccesslevels);
+            item.getChildren().add(globalAccessLevels);
+        } else if (toggleButtonPositions.isSelected()) {
+            TreeItem positions = new TreeItem<Global>(new Positions());
+            ImageView imageViewPositions = new ImageView(imagePositions);
+            imageViewPositions.setFitWidth(25);
+            imageViewPositions.setFitHeight(25);
+            positions.setGraphic(imageViewPositions);
+            item.getChildren().add(positions);
+        } else if (toggleButtonOrganizations.isSelected()) {
+            TreeItem organizations = new TreeItem<Global> (new Organizations());
+            ImageView imageViewOrganizations = new ImageView(imageOrganizations);
+            imageViewOrganizations.setFitWidth(25);
+            imageViewOrganizations.setFitHeight(25);
+            organizations.setGraphic(imageViewOrganizations);
+            item.getChildren().add(organizations);
         }
         else {
             System.out.println("NE VYBRAN OBJECT");
