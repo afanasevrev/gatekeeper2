@@ -165,7 +165,7 @@ public class Controller implements Initializable {
     //Указываем путь к рисунку office
     private final Image imageOffice = new Image("office.png");
     //Указываем путь к рисунку console
-    private final Image imageCondole = new Image("console.png");
+    private final Image imageConsole = new Image("console.png");
     //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -584,7 +584,7 @@ public class Controller implements Initializable {
             item.getChildren().add(office);
         } else if (toggleButtonConsole.isSelected()) {
             TreeItem console = new TreeItem<Global> (new Console());
-            ImageView imageViewConsole = new ImageView(imageCondole);
+            ImageView imageViewConsole = new ImageView(imageConsole);
             imageViewConsole.setFitWidth(25);
             imageViewConsole.setFitHeight(25);
             console.setGraphic(imageViewConsole);
