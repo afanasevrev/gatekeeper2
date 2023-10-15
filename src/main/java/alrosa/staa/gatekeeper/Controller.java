@@ -3,8 +3,12 @@ package alrosa.staa.gatekeeper;
 import alrosa.staa.gatekeeper.containers.*;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
+import alrosa.staa.gatekeeper.objects.bureau.Man;
+import alrosa.staa.gatekeeper.objects.bureau.Woman;
 import alrosa.staa.gatekeeper.objects.bureau.admins.Administrators;
+import alrosa.staa.gatekeeper.objects.bureau.card_layouts.CardLayout;
 import alrosa.staa.gatekeeper.objects.bureau.card_layouts.CardLayouts;
+import alrosa.staa.gatekeeper.objects.bureau.cards.Card;
 import alrosa.staa.gatekeeper.objects.bureau.cards.Cards;
 import alrosa.staa.gatekeeper.objects.bureau.global_access_levels.GlobalAccessLevels;
 import alrosa.staa.gatekeeper.objects.bureau.operators.Operators;
@@ -78,6 +82,14 @@ public class Controller implements Initializable {
     private ToggleButton toggleButtonPositions = new ToggleButton();
     @FXML
     private ToggleButton toggleButtonOrganizations = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonMan = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonWoman = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonCard = new ToggleButton();
+    @FXML
+    private ToggleButton toggleButtonCardLayout = new ToggleButton();
     //Добавим вертикальный сплиттер
     private final SplitPane splitVertical = new SplitPane();
     //Добавляем верхнее окно
@@ -121,6 +133,14 @@ public class Controller implements Initializable {
     private final Image imagePositions = new Image("positions.png");
     //Указываем путь к рисунку organizations
     private final Image imageOrganizations = new Image("organizations.png");
+    //Указываем путь к рисунку man
+    private final Image imageMan = new Image("man.png");
+    //Указываем путь к рисунку woman
+    private final Image imageWoman = new Image("woman.png");
+    //Указываем путь к рисунку card
+    private final Image imageCard = new Image("card.png");
+    //Указываем путь к рисунку card_layout
+    private final Image imageCardLayout = new Image("card_layout.png");
     //Добавим контекстное меню
     private ContextMenu contextMenu = new ContextMenu();
     //Создание кнопки "Добавить"
@@ -143,6 +163,12 @@ public class Controller implements Initializable {
     private CardReaderContainer cardReaderContainer = new CardReaderContainer();
     //Создаем экземпляр для контейнера Бюро
     private BureauContainer bureauContainer = new BureauContainer();
+    //Создаем экземпляр для контейнера Пользователи/Администраторы/Операторы
+    private UsersContainer usersContainer = new UsersContainer();
+    //Создаем экземпляр для контейнера Карты доступа
+    private CardsContainer cardsContainer = new CardsContainer();
+    //Создаем экземпляр для контейнера Макеты карт
+    private CardLayoutsContainer cardLayoutsContainer = new CardLayoutsContainer();
     private Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -175,6 +201,14 @@ public class Controller implements Initializable {
             Tooltip.install(toggleButtonPositions, new Tooltip("Должности"));
             //Добавляем всплывающий текст к кнопке Организации
             Tooltip.install(toggleButtonOrganizations, new Tooltip("Организации"));
+            //Добавляем всплывающий текст к кнопке Man
+            Tooltip.install(toggleButtonMan, new Tooltip("Человек"));
+            //Добавляем всплывающий текст к кнопке Woman
+            Tooltip.install(toggleButtonWoman, new Tooltip("Человек"));
+            //Добавляем всплывающий текст к кнопке Карта
+            Tooltip.install(toggleButtonCard, new Tooltip("Карта доступа"));
+            //Добавляем всплывающий текст к кнопке макет карты
+            Tooltip.install(toggleButtonCardLayout, new Tooltip("Макет карты"));
             //Привязываем сплиттер к окну так, чтобы он растягивался вместе с окном
             AnchorPane.setBottomAnchor(splitVertical, 0.0);
             AnchorPane.setLeftAnchor(splitVertical, 0.0);
@@ -262,7 +296,33 @@ public class Controller implements Initializable {
                                 } catch (Exception e) {
                                     throw new RuntimeException(e);
                                 }
-
+                                break;
+                            case USERS:
+                            case ADMINS:
+                            case OPERATORS:
+                                item = selectedItem;
+                                try {
+                                    usersContainer.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
+                            case CARDS:
+                                item = selectedItem;
+                                try {
+                                    cardsContainer.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
+                            case CARD_LAYOUTS:
+                                item = selectedItem;
+                                try {
+                                    cardLayoutsContainer.start(stage);
+                                } catch (Exception e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
                             default: System.out.println("Selected item: " + value);
                         }
                     });
@@ -383,6 +443,34 @@ public class Controller implements Initializable {
             imageViewOrganizations.setFitHeight(25);
             organizations.setGraphic(imageViewOrganizations);
             item.getChildren().add(organizations);
+        } else if (toggleButtonMan.isSelected()) {
+            TreeItem man = new TreeItem<Global> (new Man());
+            ImageView imageViewMan = new ImageView(imageMan);
+            imageViewMan.setFitWidth(25);
+            imageViewMan.setFitHeight(25);
+            man.setGraphic(imageViewMan);
+            item.getChildren().add(man);
+        } else if (toggleButtonWoman.isSelected()) {
+            TreeItem woman = new TreeItem<Global> (new Woman());
+            ImageView imageViewWoman = new ImageView(imageWoman);
+            imageViewWoman.setFitWidth(25);
+            imageViewWoman.setFitHeight(25);
+            woman.setGraphic(imageViewWoman);
+            item.getChildren().add(woman);
+        } else if (toggleButtonCard.isSelected()) {
+            TreeItem card = new TreeItem<Global> (new Card());
+            ImageView imageViewCard = new ImageView(imageCard);
+            imageViewCard.setFitWidth(25);
+            imageViewCard.setFitHeight(25);
+            card.setGraphic(imageViewCard);
+            item.getChildren().add(card);
+        } else if (toggleButtonCardLayout.isSelected()) {
+            TreeItem cardLayout = new TreeItem<Global> (new CardLayout());
+            ImageView imageViewCardLayout = new ImageView(imageCardLayout);
+            imageViewCardLayout.setFitWidth(25);
+            imageViewCardLayout.setFitHeight(25);
+            cardLayout.setGraphic(imageViewCardLayout);
+            item.getChildren().add(cardLayout);
         }
         else {
             System.out.println("NE VYBRAN OBJECT");

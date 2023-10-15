@@ -8,9 +8,11 @@ public class Cards extends Bureau {
     private final Direction direction = Direction.CARDS;
 
     public Cards() {
-        this.complete_name = getComplete_name();
+        this.complete_name = "Карты доступа";
     }
-
+    public Cards(String complete_name) {
+        this.complete_name = complete_name;
+    }
     @Override
     public String getComplete_name() {
         return this.complete_name;
