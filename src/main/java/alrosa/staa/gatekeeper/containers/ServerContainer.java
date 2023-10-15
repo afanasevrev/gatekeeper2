@@ -11,7 +11,7 @@ public class ServerContainer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Parent fxmlServerContainer = FXMLLoader.load(GateKeeper.class.getResource("servercontainer.fxml"));
+            Parent fxmlServerContainer = FXMLLoader.load(GateKeeper.class.getResource("server/servercontainer.fxml"));
             Scene scene = new Scene(fxmlServerContainer, 210, 165);
             stage.setScene(scene);
             stage.show();

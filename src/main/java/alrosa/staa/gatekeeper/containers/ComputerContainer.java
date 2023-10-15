@@ -7,12 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CardReaderContainer extends Application {
+public class ComputerContainer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Parent fxmlCardReaderContainer = FXMLLoader.load(GateKeeper.class.getResource("server/cardreadercontainer.fxml"));
-            Scene scene = new Scene(fxmlCardReaderContainer, 210, 165);
+            Parent fxmlComputerContainer = FXMLLoader.load(GateKeeper.class.getResource("computer/computercontainer.fxml"));
+            Scene scene = new Scene(fxmlComputerContainer, 210, 165);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

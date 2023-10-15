@@ -11,7 +11,7 @@ public class PercoContainer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Parent fxmlPercoContainer = FXMLLoader.load(GateKeeper.class.getResource("percocontainer.fxml"));
+            Parent fxmlPercoContainer = FXMLLoader.load(GateKeeper.class.getResource("server/percocontainer.fxml"));
             Scene scene = new Scene(fxmlPercoContainer, 210, 165);
             stage.setScene(scene);
             stage.show();
