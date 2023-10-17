@@ -205,7 +205,6 @@ public class Controller implements Initializable {
     private OrganizationContainer organizationContainer = new OrganizationContainer();
     //Создаем экземпляр для контейнера Компьютер
     private ComputerContainer computerContainer = new ComputerContainer();
-    Comparator<TreeItem<String>> comparator = Comparator.comparing(TreeItem::getValue);
     private Stage stage = new Stage();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -595,6 +594,7 @@ public class Controller implements Initializable {
         else {
             System.out.println("NE VYBRAN OBJECT");
         }
-        //item.getChildren().sort((Comparator<? super TreeItem<Global>>) comparator);
+        //Сортируем элементы дерева после необходимых итераций
+        item.getChildren().sort(Comparator.comparing(t->t.getValue().toString()));
     }
 }
