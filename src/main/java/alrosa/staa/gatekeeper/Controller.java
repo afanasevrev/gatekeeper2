@@ -29,6 +29,7 @@ import alrosa.staa.gatekeeper.objects.server.perco.PERCoC01;
 import alrosa.staa.gatekeeper.objects.server.perco.Perco;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
@@ -38,11 +39,24 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    //Грузим окно для главной системы
+    private FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
+    private AnchorPane paneMainSystem;
+
+    {
+        try {
+            paneMainSystem = fxmlMainSystem.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //Главное окно админского консоля
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
@@ -291,7 +305,7 @@ public class Controller implements Initializable {
             //В наше дерево добавляем контекстное меню
             root.setContextMenu(contextMenu);
 
-            //Добавляем реакции на нажатие корня дерева
+            //Добавляем реакции на нажатие корня дерева правой кнопкой мыши
             root.setOnMouseClicked(event -> {
                 TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
                 //Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
@@ -419,6 +433,24 @@ public class Controller implements Initializable {
                                      selectedItem.getParent().getChildren().remove(selectedItem);
                         }
                     });
+                } else if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
+                    TreeItem<Global> selectedItem1 = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
+                    //Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
+
+                    //Получим enum выбранного элемента
+                    Direction value = selectedItem1.getValue().getDirection();
+
+                    switch (value) {
+                        case MAINSYSTEM:
+                           // windowObjects.getChildren().removeAll();
+                            windowObjects.getChildren().add(paneMainSystem);
+                            break;
+                        case SERVER:
+                            windowObjects.getChildren().removeAll();
+                            break;
+                        default:
+                            System.out.println("Selected item: " + value);
+                    }
                 }
             });
     }

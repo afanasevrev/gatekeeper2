@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" >
+   <children>
+      <Label layoutX="14.0" layoutY="29.0" prefHeight="35.0" prefWidth="105.0" text="Главный">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="79.0" text="Версия ПО">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
