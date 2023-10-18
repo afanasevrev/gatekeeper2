@@ -442,11 +442,11 @@ public class Controller implements Initializable {
 
                     switch (value) {
                         case MAINSYSTEM:
-                           // windowObjects.getChildren().removeAll();
+                            windowObjects.getChildren().clear();
                             windowObjects.getChildren().add(paneMainSystem);
                             break;
                         case SERVER:
-                            windowObjects.getChildren().removeAll();
+                            windowObjects.getChildren().clear();
                             break;
                         default:
                             System.out.println("Selected item: " + value);
