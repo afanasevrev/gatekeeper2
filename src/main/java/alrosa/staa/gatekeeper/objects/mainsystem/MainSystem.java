@@ -4,6 +4,7 @@ import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 
 public class MainSystem extends Global {
+    private final String version = "V1.19102023";
     private String complete_name;
     private final Direction direction = Direction.MAINSYSTEM;
     public MainSystem(String complete_name) {
@@ -11,6 +12,10 @@ public class MainSystem extends Global {
     }
     public MainSystem() {
         this.complete_name = "Главный";
+    }
+
+    public String getVersion() {
+        return this.version;
     }
     @Override
     public String getComplete_name() {

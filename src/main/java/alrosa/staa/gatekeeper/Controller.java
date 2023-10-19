@@ -48,15 +48,6 @@ public class Controller implements Initializable {
     //Грузим окно для главной системы
     private FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
     private AnchorPane paneMainSystem;
-
-    {
-        try {
-            paneMainSystem = fxmlMainSystem.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     //Главное окно админского консоля
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
@@ -223,6 +214,18 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+            //Грузим fxml в paneMainSystem
+            try {
+                paneMainSystem = fxmlMainSystem.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
+            AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
+            AnchorPane.setLeftAnchor(paneMainSystem, 0.0);
+            AnchorPane.setRightAnchor(paneMainSystem, 0.0);
+            AnchorPane.setTopAnchor(paneMainSystem, 0.0);
+
             //Добавляем всплывающий текст к кнопке Сервер
             Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
             //Добавляем всплывающий текст к кнопке Компьютер
@@ -433,13 +436,11 @@ public class Controller implements Initializable {
                                      selectedItem.getParent().getChildren().remove(selectedItem);
                         }
                     });
+                    //Проверяем что была нажата левая кнопка мыши
                 } else if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
                     TreeItem<Global> selectedItem1 = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
-                    //Проверяем, что элемент не является пустым и что была нажата левая кнопка мыши
-
                     //Получим enum выбранного элемента
                     Direction value = selectedItem1.getValue().getDirection();
-
                     switch (value) {
                         case MAINSYSTEM:
                             windowObjects.getChildren().clear();
