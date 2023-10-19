@@ -1,6 +1,7 @@
 package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.*;
+import alrosa.staa.gatekeeper.controllersforboxes.BoxesController;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
 import alrosa.staa.gatekeeper.objects.bureau.Man;
@@ -45,9 +46,7 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    //Грузим окно для главной системы
-    private FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
-    private AnchorPane paneMainSystem;
+    BoxesController boxesController = new BoxesController();
     //Главное окно админского консоля
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
@@ -214,18 +213,6 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-            //Грузим fxml в paneMainSystem
-            try {
-                paneMainSystem = fxmlMainSystem.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
-            AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
-            AnchorPane.setLeftAnchor(paneMainSystem, 0.0);
-            AnchorPane.setRightAnchor(paneMainSystem, 0.0);
-            AnchorPane.setTopAnchor(paneMainSystem, 0.0);
-
             //Добавляем всплывающий текст к кнопке Сервер
             Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
             //Добавляем всплывающий текст к кнопке Компьютер
@@ -444,7 +431,7 @@ public class Controller implements Initializable {
                     switch (value) {
                         case MAINSYSTEM:
                             windowObjects.getChildren().clear();
-                            windowObjects.getChildren().add(paneMainSystem);
+                            windowObjects.getChildren().add(boxesController.paneMainSystem);
                             break;
                         case SERVER:
                             windowObjects.getChildren().clear();
