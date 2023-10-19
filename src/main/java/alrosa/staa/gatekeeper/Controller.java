@@ -47,6 +47,10 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     BoxesController boxesController = new BoxesController();
+    @FXML
+    private Button apply = new Button();
+    @FXML
+    private Button cancel = new Button();
     //Главное окно админского консоля
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
@@ -213,6 +217,20 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+            try {
+                boxesController.start(new Stage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            AnchorPane.setBottomAnchor(apply, 0.0);
+            AnchorPane.setLeftAnchor(apply, 0.0);
+            AnchorPane.setRightAnchor(apply, 0.0);
+            AnchorPane.setTopAnchor(apply, 0.0);
+            AnchorPane.setBottomAnchor(cancel, 0.0);
+            AnchorPane.setLeftAnchor(cancel, 0.0);
+            AnchorPane.setRightAnchor(cancel, 0.0);
+            AnchorPane.setTopAnchor(cancel, 0.0);
+
             //Добавляем всплывающий текст к кнопке Сервер
             Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
             //Добавляем всплывающий текст к кнопке Компьютер
