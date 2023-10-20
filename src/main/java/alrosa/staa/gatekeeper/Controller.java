@@ -46,11 +46,10 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    BoxesController boxesController = new BoxesController();
-    @FXML
-    private Button apply = new Button();
-    @FXML
-    private Button cancel = new Button();
+    //Грузим окно для главной системы
+    private FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
+    public AnchorPane paneMainSystem;
+
     //Главное окно админского консоля
     @FXML
     private AnchorPane anchorPane = new AnchorPane();
@@ -218,18 +217,16 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
             try {
-                boxesController.start(new Stage());
-            } catch (Exception e) {
+                paneMainSystem = fxmlMainSystem.load();
+                BoxesController boxesController = fxmlMainSystem.getController();
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            AnchorPane.setBottomAnchor(apply, 0.0);
-            AnchorPane.setLeftAnchor(apply, 0.0);
-            AnchorPane.setRightAnchor(apply, 0.0);
-            AnchorPane.setTopAnchor(apply, 0.0);
-            AnchorPane.setBottomAnchor(cancel, 0.0);
-            AnchorPane.setLeftAnchor(cancel, 0.0);
-            AnchorPane.setRightAnchor(cancel, 0.0);
-            AnchorPane.setTopAnchor(cancel, 0.0);
+            //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
+            AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
+            AnchorPane.setLeftAnchor(paneMainSystem, 0.0);
+            AnchorPane.setRightAnchor(paneMainSystem, 0.0);
+            AnchorPane.setTopAnchor(paneMainSystem, 0.0);
 
             //Добавляем всплывающий текст к кнопке Сервер
             Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
@@ -449,7 +446,7 @@ public class Controller implements Initializable {
                     switch (value) {
                         case MAINSYSTEM:
                             windowObjects.getChildren().clear();
-                            windowObjects.getChildren().add(boxesController.paneMainSystem);
+                            windowObjects.getChildren().add(paneMainSystem);
                             break;
                         case SERVER:
                             windowObjects.getChildren().clear();

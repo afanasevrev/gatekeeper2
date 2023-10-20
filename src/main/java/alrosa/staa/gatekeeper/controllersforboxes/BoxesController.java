@@ -15,23 +15,28 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BoxesController  extends Application {
-    //Грузим окно для главной системы
-    //private FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));;
-    public AnchorPane paneMainSystem;
+public class BoxesController implements Initializable {
+
+    @FXML
+    private Button apply = new Button();
+    @FXML
+    private Button cancel = new Button();
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
-            paneMainSystem = fxmlMainSystem.load();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
-        AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
-        AnchorPane.setLeftAnchor(paneMainSystem, 0.0);
-        AnchorPane.setRightAnchor(paneMainSystem, 0.0);
-        AnchorPane.setTopAnchor(paneMainSystem, 0.0);
+        AnchorPane.setBottomAnchor(apply, 0.0);
+        AnchorPane.setLeftAnchor(apply, 0.0);
+        AnchorPane.setRightAnchor(apply, 0.0);
+        AnchorPane.setTopAnchor(apply, 0.0);
+        AnchorPane.setBottomAnchor(cancel, 0.0);
+        AnchorPane.setLeftAnchor(cancel, 0.0);
+        AnchorPane.setRightAnchor(cancel, 0.0);
+        AnchorPane.setTopAnchor(cancel, 0.0);
     }
 }
