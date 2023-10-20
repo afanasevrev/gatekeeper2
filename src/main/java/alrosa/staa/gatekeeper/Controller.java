@@ -218,7 +218,7 @@ public class Controller implements Initializable {
     {
             try {
                 paneMainSystem = fxmlMainSystem.load();
-                BoxesController boxesController = fxmlMainSystem.getController();
+              //  BoxesController boxesController = fxmlMainSystem.getController();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

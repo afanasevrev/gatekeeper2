@@ -24,12 +24,6 @@ public class BoxesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         AnchorPane.setBottomAnchor(apply, 0.0);
         AnchorPane.setLeftAnchor(apply, 0.0);
         AnchorPane.setRightAnchor(apply, 0.0);
