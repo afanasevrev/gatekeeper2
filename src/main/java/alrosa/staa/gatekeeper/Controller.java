@@ -41,14 +41,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     //Грузим окно для главной системы
-    private FXMLLoader fxmlMainSystem = new FXMLLoader(GateKeeper.class.getResource("boxes/mainsystem.fxml"));
-    public AnchorPane paneMainSystem;
+    private BoxesController boxesController = new BoxesController();
+    @FXML
+    public AnchorPane paneMainSystem = new AnchorPane();
+    @FXML
+    private Button apply = new Button();
+    @FXML
+    private Button cancel = new Button();
+    @FXML
+    public TextField textField = new TextField();
 
     //Главное окно админского консоля
     @FXML
@@ -216,19 +224,22 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-            try {
-                paneMainSystem = fxmlMainSystem.load();
-              //  BoxesController boxesController = fxmlMainSystem.getController();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
-            AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
-            AnchorPane.setLeftAnchor(paneMainSystem, 0.0);
-            AnchorPane.setRightAnchor(paneMainSystem, 0.0);
-            AnchorPane.setTopAnchor(paneMainSystem, 0.0);
+        textField.setText("Главная система");
+        AnchorPane.setBottomAnchor(apply, 0.0);
+        AnchorPane.setLeftAnchor(apply, 0.0);
+        AnchorPane.setRightAnchor(apply, 0.0);
+        AnchorPane.setTopAnchor(apply, 0.0);
+        AnchorPane.setBottomAnchor(cancel, 0.0);
+        AnchorPane.setLeftAnchor(cancel, 0.0);
+        AnchorPane.setRightAnchor(cancel, 0.0);
+        AnchorPane.setTopAnchor(cancel, 0.0);
+        //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
+        AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
+        AnchorPane.setLeftAnchor(paneMainSystem, 0.0);
+        AnchorPane.setRightAnchor(paneMainSystem, 0.0);
+        AnchorPane.setTopAnchor(paneMainSystem, 0.0);
 
-            //Добавляем всплывающий текст к кнопке Сервер
+        //Добавляем всплывающий текст к кнопке Сервер
             Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
             //Добавляем всплывающий текст к кнопке Компьютер
             Tooltip.install(toggleButtonComputer, new Tooltip("Компьютер"));
@@ -445,6 +456,11 @@ public class Controller implements Initializable {
                     Direction value = selectedItem1.getValue().getDirection();
                     switch (value) {
                         case MAINSYSTEM:
+                            try {
+                                boxesController.start(new Stage());
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
                             windowObjects.getChildren().clear();
                             windowObjects.getChildren().add(paneMainSystem);
                             break;
