@@ -225,14 +225,14 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         textField.setText("Главная система");
-        AnchorPane.setBottomAnchor(apply, 0.0);
-        AnchorPane.setLeftAnchor(apply, 0.0);
-        AnchorPane.setRightAnchor(apply, 0.0);
-        AnchorPane.setTopAnchor(apply, 0.0);
-        AnchorPane.setBottomAnchor(cancel, 0.0);
-        AnchorPane.setLeftAnchor(cancel, 0.0);
-        AnchorPane.setRightAnchor(cancel, 0.0);
-        AnchorPane.setTopAnchor(cancel, 0.0);
+         AnchorPane.setBottomAnchor(apply, 0.0);
+        // AnchorPane.setLeftAnchor(apply, 0.0);
+        // AnchorPane.setRightAnchor(apply, 0.0);
+        // AnchorPane.setTopAnchor(apply, 0.0);
+         AnchorPane.setBottomAnchor(cancel, 0.0);
+        // AnchorPane.setLeftAnchor(cancel, 0.0);
+        // AnchorPane.setRightAnchor(cancel, 0.0);
+        // AnchorPane.setTopAnchor(cancel, 0.0);
         //Привязываем paneMainSystem к окну так, чтобы он растягивался вместе с окном
         AnchorPane.setBottomAnchor(paneMainSystem, 0.0);
         AnchorPane.setLeftAnchor(paneMainSystem, 0.0);

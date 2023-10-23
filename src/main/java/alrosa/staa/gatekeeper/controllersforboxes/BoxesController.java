@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BoxesController extends Application  {
+    public AnchorPane pane = new AnchorPane();
     @Override
     public void start(Stage stage) throws Exception {
         try {
