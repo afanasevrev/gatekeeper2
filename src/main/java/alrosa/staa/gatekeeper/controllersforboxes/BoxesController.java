@@ -22,7 +22,7 @@ public class BoxesController extends Application  {
     public void start(Stage stage) throws Exception {
         try {
             Parent fxml = FXMLLoader.load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
-            scene = new Scene(fxml, 460, 200);
+            scene = new Scene(fxml, 100, 100);
             stage.setScene(scene);
             //stage.show();
         } catch (Exception e) {
