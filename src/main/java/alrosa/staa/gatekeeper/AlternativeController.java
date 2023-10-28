@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 public class AlternativeController implements Initializable {
     @FXML
-    private AnchorPane anchorpaneForButtons = new AnchorPane();
+    private AnchorPane anchorPaneForButtons = new AnchorPane();
     @FXML
     private SplitPane splitPaneVertical = new SplitPane();
     @FXML
@@ -36,9 +36,9 @@ public class AlternativeController implements Initializable {
         AnchorPane.setBottomAnchor(apply, 10.0);
         AnchorPane.setBottomAnchor(cancel, 10.0);
 
-        AnchorPane.setLeftAnchor(anchorpaneForButtons, 0.0);
-        AnchorPane.setBottomAnchor(anchorpaneForButtons, 0.0);
-        AnchorPane.setRightAnchor(anchorpaneForButtons, 0.0);
-        AnchorPane.setTopAnchor(anchorpaneForButtons, 0.0);
+        AnchorPane.setLeftAnchor(anchorPaneForButtons, 0.0);
+        AnchorPane.setBottomAnchor(anchorPaneForButtons, 0.0);
+        AnchorPane.setRightAnchor(anchorPaneForButtons, 0.0);
+        AnchorPane.setTopAnchor(anchorPaneForButtons, 0.0);
     }
 }
