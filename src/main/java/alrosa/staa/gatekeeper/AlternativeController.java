@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -34,9 +35,17 @@ public class AlternativeController implements Initializable {
     //Кнопка отменить
     @FXML
     private Button cancel = new Button();
+    //Дерево
+    @FXML
+    private TreeView root = new TreeView();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
         //Прикрепляем вертикальный сплиттер к окну так, чтобы он растягивался вместе с ним
         AnchorPane.setLeftAnchor(splitPaneVertical, 0.0);
         AnchorPane.setBottomAnchor(splitPaneVertical, 0.0);
