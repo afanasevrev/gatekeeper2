@@ -1,9 +1,12 @@
 package alrosa.staa.gatekeeper;
 
+import alrosa.staa.gatekeeper.objects.global.Global;
+import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
 
@@ -35,9 +38,11 @@ public class AlternativeController implements Initializable {
     //Кнопка отменить
     @FXML
     private Button cancel = new Button();
+    //Главное дерево
+    private TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
     //Дерево
     @FXML
-    private TreeView root = new TreeView();
+    private TreeView root = new TreeView(mainSystem);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,6 +71,5 @@ public class AlternativeController implements Initializable {
         AnchorPane.setBottomAnchor(anchorPaneForButtons, 0.0);
         AnchorPane.setRightAnchor(anchorPaneForButtons, 0.0);
         AnchorPane.setTopAnchor(anchorPaneForButtons, 0.0);
-
     }
 }
