@@ -1,5 +1,6 @@
 package alrosa.staa.gatekeeper;
 
+import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
 import javafx.fxml.FXML;
@@ -8,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -38,12 +41,15 @@ public class AlternativeController implements Initializable {
     //Кнопка отменить
     @FXML
     private Button cancel = new Button();
-    //Главное дерево
+    //Главный объект на дереве
     private TreeItem<Global> mainSystem = new TreeItem<>(new MainSystem());
+    //Указываем путь к рисунку главного дерева в системе
+    private Image imageMain = new Image("main.png");
+    //Создаем ImageView для рисунка main.png
+    private ImageView imageViewMain = new ImageView(imageMain);
     //Дерево
-    @FXML
     private TreeView root = new TreeView(mainSystem);
-
+    private static TreeItem<Global> item;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
@@ -71,5 +77,17 @@ public class AlternativeController implements Initializable {
         AnchorPane.setBottomAnchor(anchorPaneForButtons, 0.0);
         AnchorPane.setRightAnchor(anchorPaneForButtons, 0.0);
         AnchorPane.setTopAnchor(anchorPaneForButtons, 0.0);
+
+        anchorPaneForItems.getChildren().addAll(root);
+        imageViewMain.setFitWidth(25);
+        imageViewMain.setFitHeight(25);
+        mainSystem.setGraphic(imageViewMain);
+    }
+    private void addItem(TreeItem treeItem, Image image) {
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(25);
+        imageView.setFitWidth(25);
+        treeItem.setGraphic(imageView);
+        item.getChildren().add(treeItem);
     }
 }
