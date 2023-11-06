@@ -4,6 +4,7 @@ import alrosa.staa.gatekeeper.containers.*;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,6 +17,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AlternativeController implements Initializable {
+    //Кнопка добавить
+    @FXML
+    private Button buttonCreate = new Button();
+    //Кнопка отменить
+    @FXML
+    private Button buttonCancel = new Button();
     //Окно для кнопок
     @FXML
     private AnchorPane anchorPaneForButtons = new AnchorPane();
@@ -175,5 +182,15 @@ public class AlternativeController implements Initializable {
         imageView.setFitWidth(25);
         treeItem.setGraphic(imageView);
         item.getChildren().add(treeItem);
+    }
+
+    @FXML
+    public void isPressedButtonCansel(ActionEvent event) {
+        Stage stage = (Stage) buttonCancel.getScene().getWindow();
+        stage.close();
+    }
+    @FXML
+    public void isPressedButtonCreate(ActionEvent event) {
+
     }
 }

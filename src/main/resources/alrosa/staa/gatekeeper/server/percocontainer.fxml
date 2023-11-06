@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="165.0" prefWidth="210.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="alrosa.staa.gatekeeper.Controller">
+<AnchorPane prefHeight="165.0" prefWidth="210.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="alrosa.staa.gatekeeper.AlternativeController">
    <children>
       <Button fx:id = "buttonCreate" onAction = "#isPressedButtonCreate" layoutX="30.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Создать" />
       <Button fx:id = "buttonCancel" onAction = "#isPressedButtonCansel" layoutX = "116.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Отмена" />

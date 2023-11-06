@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="165.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alrosa.staa.gatekeeper.Controller">
+<AnchorPane prefHeight="165.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alrosa.staa.gatekeeper.AlternativeController">
     <children>
         <ToggleButtonGroup layoutX="75.0" layoutY="58.0" selectionType="SINGLE">
             <toggles>
