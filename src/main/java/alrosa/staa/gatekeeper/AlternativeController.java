@@ -47,6 +47,75 @@ public class AlternativeController implements Initializable {
     //Кнопка отменить
     @FXML
     private Button cancel = new Button();
+    //Кнопка для выбора сервера
+    @FXML
+    private ToggleButton toggleButtonServer = new ToggleButton();
+    //Кнопка для выбора компьютера
+    @FXML
+    private ToggleButton toggleButtonComputer = new ToggleButton();
+    //Кнопка для выбора бюро
+    @FXML
+    private ToggleButton toggleButtonBureau = new ToggleButton();
+    //Кнопка для выбора оборудования Perco
+    @FXML
+    private ToggleButton toggleButtonPerco = new ToggleButton();
+    //Кнопка для выбора контроллера PERC0-C01
+    @FXML
+    private ToggleButton toggleButtonPERCoC01 = new ToggleButton();
+    //Кнопка для выбора считывателя
+    @FXML
+    private ToggleButton toggleButtonCardReader = new ToggleButton();
+    //Кнопка для выбора сотрудников
+    @FXML
+    private ToggleButton toggleButtonUsers = new ToggleButton();
+    //Кнопка для выбора Администраторов
+    @FXML
+    private ToggleButton toggleButtonAdmins = new ToggleButton();
+    //Кнопка для выбора Операторов
+    @FXML
+    private ToggleButton toggleButtonOperators = new ToggleButton();
+    //Кнопка для выбора карт
+    @FXML
+    private ToggleButton toggleButtonCards = new ToggleButton();
+    //Кнопка для выбора макетов карт
+    @FXML
+    private ToggleButton toggleButtonCardLayouts = new ToggleButton();
+    //Кнопка для выбора глобальных уровней доступа
+    @FXML
+    private ToggleButton toggleButtonGlobalAccessLevels = new ToggleButton();
+    //Кнопка для выбора должностей
+    @FXML
+    private ToggleButton toggleButtonPositions = new ToggleButton();
+    //Кнопка для выбора организаций
+    @FXML
+    private ToggleButton toggleButtonOrganizations = new ToggleButton();
+    //Кнопка для выбора людей мужского пола
+    @FXML
+    private ToggleButton toggleButtonMan = new ToggleButton();
+    //Кнопка для выбора людей женского пола
+    @FXML
+    private ToggleButton toggleButtonWoman = new ToggleButton();
+    //Кнопка для выбора карты
+    @FXML
+    private ToggleButton toggleButtonCard = new ToggleButton();
+    //Кнопка для выбора макета карты
+    @FXML
+    private ToggleButton toggleButtonCardLayout = new ToggleButton();
+    //Кнопка для выбора глобального уровня доступа
+    @FXML
+    private ToggleButton toggleButtonGlobalAccessLevel = new ToggleButton();
+    //Кнопка для выбора должности
+    @FXML
+    private ToggleButton toggleButtonPosition = new ToggleButton();
+    //Кнопка для выбора организации
+    @FXML
+    private ToggleButton toggleButtonOrganization = new ToggleButton();
+    //Кнопка для выбора отдела
+    @FXML
+    private ToggleButton toggleButtonOffice = new ToggleButton();
+    //Кнопка для выбора консоли
+    @FXML
+    private ToggleButton toggleButtonConsole = new ToggleButton();
     //Указываем путь к рисунку главного дерева в системе
     private Image imageMain = new Image("main.png");
 
