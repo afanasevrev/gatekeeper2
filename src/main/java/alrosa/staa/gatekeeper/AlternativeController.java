@@ -2,18 +2,43 @@ package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.*;
 import alrosa.staa.gatekeeper.objects.Direction;
+import alrosa.staa.gatekeeper.objects.bureau.Bureau;
+import alrosa.staa.gatekeeper.objects.bureau.Man;
+import alrosa.staa.gatekeeper.objects.bureau.Woman;
+import alrosa.staa.gatekeeper.objects.bureau.admins.Administrators;
+import alrosa.staa.gatekeeper.objects.bureau.card_layouts.CardLayout;
+import alrosa.staa.gatekeeper.objects.bureau.card_layouts.CardLayouts;
+import alrosa.staa.gatekeeper.objects.bureau.cards.Card;
+import alrosa.staa.gatekeeper.objects.bureau.cards.Cards;
+import alrosa.staa.gatekeeper.objects.bureau.global_access_levels.GlobalAccessLevel;
+import alrosa.staa.gatekeeper.objects.bureau.global_access_levels.GlobalAccessLevels;
+import alrosa.staa.gatekeeper.objects.bureau.operators.Operators;
+import alrosa.staa.gatekeeper.objects.bureau.organizations.Office;
+import alrosa.staa.gatekeeper.objects.bureau.organizations.Organization;
+import alrosa.staa.gatekeeper.objects.bureau.organizations.Organizations;
+import alrosa.staa.gatekeeper.objects.bureau.positions.Position;
+import alrosa.staa.gatekeeper.objects.bureau.positions.Positions;
+import alrosa.staa.gatekeeper.objects.bureau.users.Users;
+import alrosa.staa.gatekeeper.objects.computer.Computer;
+import alrosa.staa.gatekeeper.objects.computer.console.Console;
 import alrosa.staa.gatekeeper.objects.global.Global;
 import alrosa.staa.gatekeeper.objects.mainsystem.MainSystem;
+import alrosa.staa.gatekeeper.objects.server.CardReader;
+import alrosa.staa.gatekeeper.objects.server.Server;
+import alrosa.staa.gatekeeper.objects.server.perco.PERCoC01;
+import alrosa.staa.gatekeeper.objects.server.perco.Perco;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class AlternativeController implements Initializable {
@@ -234,6 +259,50 @@ public class AlternativeController implements Initializable {
         AnchorPane.setBottomAnchor(anchorPaneForButtons, 0.0);
         AnchorPane.setRightAnchor(anchorPaneForButtons, 0.0);
         AnchorPane.setTopAnchor(anchorPaneForButtons, 0.0);
+        //Добавляем всплывающий текст к кнопке Сервер
+        Tooltip.install(toggleButtonServer, new Tooltip("Сервер"));
+        //Добавляем всплывающий текст к кнопке Компьютер
+        Tooltip.install(toggleButtonComputer, new Tooltip("Компьютер"));
+        //Добавляем всплывающий текст к кнопке Бюро
+        Tooltip.install(toggleButtonBureau, new Tooltip("Бюро"));
+        //Добавляем всплывающий текст к кнопке оборудование Perco
+        Tooltip.install(toggleButtonPerco, new Tooltip("Оборудование Perco"));
+        //Добавляем всплывающий текст к кнопке PERCo-C01
+        Tooltip.install(toggleButtonPERCoC01, new Tooltip("Контроллер PERCo-C01"));
+        //Добавялем всплывающий текст к кнопке Считыватель
+        Tooltip.install(toggleButtonCardReader, new Tooltip("Считыватель"));
+        //Добавляем всплывающий текст к кнопке Пользователи
+        Tooltip.install(toggleButtonUsers, new Tooltip("Пользователи"));
+        //Добавляем всплывающий текст к кнопке Администраторы
+        Tooltip.install(toggleButtonAdmins, new Tooltip("Администраторы"));
+        //Добавляем всплывающий текст к кнопке Операторы
+        Tooltip.install(toggleButtonOperators, new Tooltip("Операторы"));
+        //Добавляем всплывающий текст к кнопке Карты
+        Tooltip.install(toggleButtonCards, new Tooltip("Карты"));
+        //Добавляем всплывающий текст к кнопке Макеты карт
+        Tooltip.install(toggleButtonCardLayouts, new Tooltip("Макеты карт"));
+        //Добавляем всплывающий текст к кнопке Глобальные уровни доступа
+        Tooltip.install(toggleButtonGlobalAccessLevels, new Tooltip("Глобальные уровни доступа"));
+        //Добавляем всплывающий текст к кнопке Должности
+        Tooltip.install(toggleButtonPositions, new Tooltip("Должности"));
+        //Добавляем всплывающий текст к кнопке Организации
+        Tooltip.install(toggleButtonOrganizations, new Tooltip("Организации"));
+        //Добавляем всплывающий текст к кнопке Man
+        Tooltip.install(toggleButtonMan, new Tooltip("Человек"));
+        //Добавляем всплывающий текст к кнопке Woman
+        Tooltip.install(toggleButtonWoman, new Tooltip("Человек"));
+        //Добавляем всплывающий текст к кнопке Карта
+        Tooltip.install(toggleButtonCard, new Tooltip("Карта доступа"));
+        //Добавляем всплывающий текст к кнопке макет карты
+        Tooltip.install(toggleButtonCardLayout, new Tooltip("Макет карты"));
+        //Добавляем всплывающий текст к кнопке глобальные уровни доступа
+        Tooltip.install(toggleButtonGlobalAccessLevel, new Tooltip("Глобальный уровень доступа"));
+        //Добавляем всплывающий текст к кнопке должности
+        Tooltip.install(toggleButtonPosition, new Tooltip("Должность"));
+        //Добавляем всплывающий текст к кнопке организации
+        Tooltip.install(toggleButtonOrganization, new Tooltip("Организация"));
+        //Добавляем всплывающий текст к кнопке отдел
+        Tooltip.install(toggleButtonOffice, new Tooltip("Отдел"));
 
         anchorPaneForItems.getChildren().addAll(root);
         imageViewMain.setFitWidth(25);
@@ -244,6 +313,142 @@ public class AlternativeController implements Initializable {
         contextMenu.getItems().addAll(menuAdd, menuDelete);
         //В наше дерево добавляем контекстное меню
         root.setContextMenu(contextMenu);
+        //Добавляем реакции на нажатие корня дерева правой кнопкой мыши
+        root.setOnMouseClicked(event -> {
+            TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
+            //Проверяем, что элемент не является пустым и что была нажата правая кнопка мыши
+            if (selectedItem != null && event.getButton() == MouseButton.SECONDARY) {
+                //Получим enum выбранного элемента
+                Direction value = selectedItem.getValue().getDirection();
+                //Добавляем реакцию на нажатие кнопки "Добавить"
+                menuAdd.setOnAction(event1 -> {
+                    switch (value) {
+                        case MAINSYSTEM:
+                            item = selectedItem;
+                            try {
+                                mainContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case SERVER:
+                            item = selectedItem;
+                            try {
+                                serverContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case PERCO:
+                            item = selectedItem;
+                            try {
+                                percoContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case PERCOC01:
+                            item = selectedItem;
+                            try {
+                                cardReaderContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case BUREAU:
+                            item = selectedItem;
+                            try {
+                                bureauContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case USERS:
+                        case ADMINS:
+                        case OPERATORS:
+                            item = selectedItem;
+                            try {
+                                usersContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case CARDS:
+                            item = selectedItem;
+                            try {
+                                cardsContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case CARD_LAYOUTS:
+                            item = selectedItem;
+                            try {
+                                cardLayoutsContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case GLOBAL_ACCESS_LEVELS:
+                            item = selectedItem;
+                            try {
+                                globalAccessLevelsContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case POSITIONS:
+                            item = selectedItem;
+                            try {
+                                positionsContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case ORGANIZATIONS:
+                            item = selectedItem;
+                            try {
+                                organizationsContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case ORGANIZATION:
+                            item = selectedItem;
+                            try {
+                                organizationContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case COMPUTER:
+                            item = selectedItem;
+                            try {
+                                computerContainer.start(stage);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        default: System.out.println("Selected item: " + value);
+                    }
+                });
+                //Добавляем реакцию на нажатие кнопки "Удалить"
+                menuDelete.setOnAction(event1 -> {
+                    switch (value) {
+                        case MAINSYSTEM:
+                            break;
+                        default: System.out.println("Deleted item: " + selectedItem.getValue().getDirection());
+                            selectedItem.getParent().getChildren().remove(selectedItem);
+                    }
+                });
+                //Проверяем что была нажата левая кнопка мыши
+            } else if (selectedItem != null && event.getButton() == MouseButton.PRIMARY) {
+                TreeItem<Global> selectedItem1 = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
+                //Получим enum выбранного элемента
+                Direction value = selectedItem1.getValue().getDirection();
+
+            }
+        });
     }
     private void addItem(TreeItem treeItem, Image image) {
         ImageView imageView = new ImageView(image);
@@ -260,6 +465,80 @@ public class AlternativeController implements Initializable {
     }
     @FXML
     public void isPressedButtonCreate(ActionEvent event) {
-
+        if (toggleButtonServer.isSelected()) {
+            TreeItem server = new TreeItem<Global>(new Server());
+            addItem(server, imageServer);
+        } else if (toggleButtonComputer.isSelected()) {
+            TreeItem computer = new TreeItem<Global>(new Computer());
+            addItem(computer, imageComputer);
+        } else if (toggleButtonBureau.isSelected()) {
+            TreeItem bureau = new TreeItem<Global>(new Bureau());
+            addItem(bureau, imageBureau);
+        } else if (toggleButtonPerco.isSelected()) {
+            TreeItem perco = new TreeItem<Global>(new Perco());
+            addItem(perco, imagePerco);
+        } else if (toggleButtonPERCoC01.isSelected()) {
+            TreeItem percoc01 = new TreeItem<Global>(new PERCoC01());
+            addItem(percoc01, imagePERCoC01);
+        } else if (toggleButtonCardReader.isSelected()) {
+            TreeItem cardReader = new TreeItem<Global>(new CardReader());
+            addItem(cardReader, imageCardReader);
+        } else if (toggleButtonUsers.isSelected()) {
+            TreeItem users = new TreeItem<Global>(new Users());
+            addItem(users, imageUsers);
+        } else if (toggleButtonAdmins.isSelected()) {
+            TreeItem admins = new TreeItem<Global>(new Administrators());
+            addItem(admins, imageAdmins);
+        } else if (toggleButtonOperators.isSelected()) {
+            TreeItem operators = new TreeItem<Global>(new Operators());
+            addItem(operators, imageOperators);
+        } else if (toggleButtonCards.isSelected()) {
+            TreeItem cards = new TreeItem<Global>(new Cards());
+            addItem(cards, imageCards);
+        } else if (toggleButtonCardLayouts.isSelected()) {
+            TreeItem cardLayouts = new TreeItem<Global>(new CardLayouts());
+            addItem(cardLayouts, imageCardLayouts);
+        } else if (toggleButtonGlobalAccessLevels.isSelected()) {
+            TreeItem globalAccessLevels = new TreeItem<Global>(new GlobalAccessLevels());
+            addItem(globalAccessLevels, imageGlobalAccessLevels);
+        } else if (toggleButtonPositions.isSelected()) {
+            TreeItem positions = new TreeItem<Global>(new Positions());
+            addItem(positions, imagePositions);
+        } else if (toggleButtonOrganizations.isSelected()) {
+            TreeItem organizations = new TreeItem<Global> (new Organizations());
+            addItem(organizations, imageOrganizations);
+        } else if (toggleButtonMan.isSelected()) {
+            TreeItem man = new TreeItem<Global> (new Man());
+            addItem(man, imageMan);
+        } else if (toggleButtonWoman.isSelected()) {
+            TreeItem woman = new TreeItem<Global> (new Woman());
+            addItem(woman, imageWoman);
+        } else if (toggleButtonCard.isSelected()) {
+            TreeItem card = new TreeItem<Global> (new Card());
+            addItem(card, imageCard);
+        } else if (toggleButtonCardLayout.isSelected()) {
+            TreeItem cardLayout = new TreeItem<Global> (new CardLayout());
+            addItem(cardLayout, imageCardLayout);
+        } else if (toggleButtonGlobalAccessLevel.isSelected()) {
+            TreeItem globalAccessLevel = new TreeItem<Global> (new GlobalAccessLevel());
+            addItem(globalAccessLevel, imageGlobalAccessLevel);
+        } else if (toggleButtonPosition.isSelected()) {
+            TreeItem position = new TreeItem<Global> (new Position());
+            addItem(position, imagePosition);
+        } else if (toggleButtonOrganization.isSelected()) {
+            TreeItem organization = new TreeItem<Global> (new Organization());
+            addItem(organization, imageOrganization);
+        } else if (toggleButtonOffice.isSelected()) {
+            TreeItem office = new TreeItem<Global> (new Office());
+            addItem(office, imageOffice);
+        } else if (toggleButtonConsole.isSelected()) {
+            TreeItem console = new TreeItem<Global> (new Console());
+            addItem(console, imageConsole);
+        }
+        else {
+            System.out.println("NO OBJECT SELECTED");
+        }
+        //Сортируем элементы дерева после необходимых итераций
+        item.getChildren().sort(Comparator.comparing(t->t.getValue().toString()));
     }
 }
