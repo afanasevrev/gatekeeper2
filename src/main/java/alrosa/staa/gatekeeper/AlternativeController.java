@@ -450,6 +450,7 @@ public class AlternativeController implements Initializable {
             }
         });
     }
+    //Метод для добавления объекта в дерево системы
     private void addItem(TreeItem treeItem, Image image) {
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(25);
