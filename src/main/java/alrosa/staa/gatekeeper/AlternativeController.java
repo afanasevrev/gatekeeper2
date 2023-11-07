@@ -230,7 +230,10 @@ public class AlternativeController implements Initializable {
     private ComputerContainer computerContainer = new ComputerContainer();
     //Добавляем сцену
     private Stage stage = new Stage();
-    //Добавляем статический объект дерева
+    /*
+    Добавляем статический объект дерева - переменная, в которой будет размещаться
+    выбранный объект в дереве
+    */
     private static TreeItem<Global> item;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -322,9 +325,9 @@ public class AlternativeController implements Initializable {
                 Direction value = selectedItem.getValue().getDirection();
                 //Добавляем реакцию на нажатие кнопки "Добавить"
                 menuAdd.setOnAction(event1 -> {
+                    item = selectedItem;
                     switch (value) {
                         case MAINSYSTEM:
-                            item = selectedItem;
                             try {
                                 mainContainer.start(stage);
                             } catch (Exception e) {
@@ -332,7 +335,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case SERVER:
-                            item = selectedItem;
                             try {
                                 serverContainer.start(stage);
                             } catch (Exception e) {
@@ -340,7 +342,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case PERCO:
-                            item = selectedItem;
                             try {
                                 percoContainer.start(stage);
                             } catch (Exception e) {
@@ -348,7 +349,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case PERCOC01:
-                            item = selectedItem;
                             try {
                                 cardReaderContainer.start(stage);
                             } catch (Exception e) {
@@ -356,7 +356,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case BUREAU:
-                            item = selectedItem;
                             try {
                                 bureauContainer.start(stage);
                             } catch (Exception e) {
@@ -366,7 +365,6 @@ public class AlternativeController implements Initializable {
                         case USERS:
                         case ADMINS:
                         case OPERATORS:
-                            item = selectedItem;
                             try {
                                 usersContainer.start(stage);
                             } catch (Exception e) {
@@ -374,7 +372,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case CARDS:
-                            item = selectedItem;
                             try {
                                 cardsContainer.start(stage);
                             } catch (Exception e) {
@@ -382,7 +379,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case CARD_LAYOUTS:
-                            item = selectedItem;
                             try {
                                 cardLayoutsContainer.start(stage);
                             } catch (Exception e) {
@@ -390,7 +386,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case GLOBAL_ACCESS_LEVELS:
-                            item = selectedItem;
                             try {
                                 globalAccessLevelsContainer.start(stage);
                             } catch (Exception e) {
@@ -398,7 +393,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case POSITIONS:
-                            item = selectedItem;
                             try {
                                 positionsContainer.start(stage);
                             } catch (Exception e) {
@@ -406,7 +400,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case ORGANIZATIONS:
-                            item = selectedItem;
                             try {
                                 organizationsContainer.start(stage);
                             } catch (Exception e) {
@@ -414,7 +407,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case ORGANIZATION:
-                            item = selectedItem;
                             try {
                                 organizationContainer.start(stage);
                             } catch (Exception e) {
@@ -422,7 +414,6 @@ public class AlternativeController implements Initializable {
                             }
                             break;
                         case COMPUTER:
-                            item = selectedItem;
                             try {
                                 computerContainer.start(stage);
                             } catch (Exception e) {
