@@ -16,15 +16,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BoxesController extends Application  {
+public class BoxesController  {
     public Scene scene;
-    @Override
+
     public void start(Stage stage) throws Exception {
         try {
             Parent fxml = FXMLLoader.load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
-            scene = new Scene(fxml, 100, 100);
+            scene = new Scene(fxml, 300, 155);
+
             stage.setScene(scene);
-            //stage.show();
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

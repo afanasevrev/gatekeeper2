@@ -240,8 +240,16 @@ public class AlternativeController implements Initializable {
     //Создаем экземпляр BoxesController
     private BoxesController boxesController = new BoxesController();
     private AnchorPane pane = new AnchorPane();
+    @FXML
+    private TextField textField = new TextField();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        textField.setEditable(true);
+        //Прикрепляем главное окно
+        AnchorPane.setLeftAnchor(pane, 0.0);
+        AnchorPane.setBottomAnchor(pane, 0.0);
+        AnchorPane.setRightAnchor(pane, 0.0);
+        AnchorPane.setTopAnchor(pane, 0.0);
         //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
         AnchorPane.setLeftAnchor(root, 0.0);
         AnchorPane.setBottomAnchor(root, 0.0);
