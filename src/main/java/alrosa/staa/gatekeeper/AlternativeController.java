@@ -1,6 +1,7 @@
 package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.*;
+import alrosa.staa.gatekeeper.controllersforboxes.BoxesController;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
 import alrosa.staa.gatekeeper.objects.bureau.Man;
@@ -235,6 +236,10 @@ public class AlternativeController implements Initializable {
     выбранный объект в дереве
     */
     private static TreeItem<Global> item;
+
+    //Создаем экземпляр BoxesController
+    private BoxesController boxesController = new BoxesController();
+    private AnchorPane pane = new AnchorPane();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
@@ -437,7 +442,24 @@ public class AlternativeController implements Initializable {
                 TreeItem<Global> selectedItem1 = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
                 //Получим enum выбранного элемента
                 Direction value = selectedItem1.getValue().getDirection();
+                switch (value) {
+                    case MAINSYSTEM:
+                        try {
+                            boxesController.start(stage);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
 
+                        pane.getChildren().add(boxesController.scene.getRoot());
+                        anchorPaneForObjects.getChildren().clear();
+                        anchorPaneForObjects.getChildren().add(pane);
+                        break;
+                    case SERVER:
+                        anchorPaneForObjects.getChildren().clear();
+                        break;
+                    default:
+                        System.out.println("Selected item: " + value);
+                }
             }
         });
     }
