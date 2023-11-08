@@ -30,7 +30,10 @@ import alrosa.staa.gatekeeper.objects.server.perco.PERCoC01;
 import alrosa.staa.gatekeeper.objects.server.perco.Perco;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,6 +41,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
@@ -242,6 +246,7 @@ public class AlternativeController implements Initializable {
     private AnchorPane pane = new AnchorPane();
     @FXML
     private TextField textField = new TextField();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textField.setEditable(true);
@@ -329,6 +334,7 @@ public class AlternativeController implements Initializable {
         contextMenu.getItems().addAll(menuAdd, menuDelete);
         //В наше дерево добавляем контекстное меню
         root.setContextMenu(contextMenu);
+
         //Добавляем реакции на нажатие корня дерева правой кнопкой мыши
         root.setOnMouseClicked(event -> {
             TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
@@ -452,6 +458,7 @@ public class AlternativeController implements Initializable {
                 Direction value = selectedItem1.getValue().getDirection();
                 switch (value) {
                     case MAINSYSTEM:
+
                         try {
                             boxesController.start(stage);
                         } catch (Exception e) {
