@@ -17,15 +17,21 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BoxesController  {
+    public Parent loader;
     public Scene scene;
-
+    public BoxesController() {
+        try {
+            loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void start(Stage stage) throws Exception {
         try {
             Parent fxml = FXMLLoader.load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
             scene = new Scene(fxml, 300, 155);
-
-            stage.setScene(scene);
-            stage.show();
+            //stage.setScene(scene);
+            //stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

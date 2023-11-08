@@ -242,19 +242,18 @@ public class AlternativeController implements Initializable {
     private static TreeItem<Global> item;
 
     //Создаем экземпляр BoxesController
-    private BoxesController boxesController = new BoxesController();
+    private BoxesController boxesController;
     private AnchorPane pane = new AnchorPane();
     @FXML
     private TextField textField = new TextField();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        textField.setEditable(true);
         //Прикрепляем главное окно
-        AnchorPane.setLeftAnchor(pane, 0.0);
-        AnchorPane.setBottomAnchor(pane, 0.0);
-        AnchorPane.setRightAnchor(pane, 0.0);
-        AnchorPane.setTopAnchor(pane, 0.0);
+        //AnchorPane.setLeftAnchor(pane, 0.0);
+        //AnchorPane.setBottomAnchor(pane, 0.0);
+        //AnchorPane.setRightAnchor(pane, 0.0);
+        //AnchorPane.setTopAnchor(pane, 0.0);
         //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
         AnchorPane.setLeftAnchor(root, 0.0);
         AnchorPane.setBottomAnchor(root, 0.0);
@@ -458,14 +457,10 @@ public class AlternativeController implements Initializable {
                 Direction value = selectedItem1.getValue().getDirection();
                 switch (value) {
                     case MAINSYSTEM:
+                        boxesController = new BoxesController();
 
-                        try {
-                            boxesController.start(stage);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
+                        pane.getChildren().addAll(boxesController.loader);
 
-                        pane.getChildren().add(boxesController.scene.getRoot());
                         anchorPaneForObjects.getChildren().clear();
                         anchorPaneForObjects.getChildren().add(pane);
                         break;
