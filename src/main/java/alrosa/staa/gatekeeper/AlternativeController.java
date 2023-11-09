@@ -446,8 +446,7 @@ public class AlternativeController implements Initializable {
                     switch (value) {
                         case MAINSYSTEM:
                             break;
-                        default: System.out.println("Deleted item: " + selectedItem.getValue().getDirection());
-                            selectedItem.getParent().getChildren().remove(selectedItem);
+                        default: selectedItem.getParent().getChildren().remove(selectedItem);
                     }
                 });
                 //Проверяем что была нажата левая кнопка мыши

@@ -15,7 +15,7 @@
                       <AnchorPane fx:id="anchorPaneForItems" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="300.0" />
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="300.0">
                            <children>
-                              <AnchorPane fx:id="anchorPaneForObjects" focusTraversable="true" prefHeight="155.0" prefWidth="300.0" />
+                              <AnchorPane fx:id="anchorPaneForObjects" prefHeight="150.0" prefWidth="300.0" />
                               <AnchorPane fx:id="anchorPaneForButtons" layoutY="158.0" prefHeight="45.0" prefWidth="300.0">
                                  <children>
                                     <Button fx:id="apply" layoutX="133.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Создать" />
