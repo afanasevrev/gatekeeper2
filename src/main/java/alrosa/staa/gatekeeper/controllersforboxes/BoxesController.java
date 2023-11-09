@@ -26,14 +26,4 @@ public class BoxesController  {
             throw new RuntimeException(e);
         }
     }
-    public void start(Stage stage) throws Exception {
-        try {
-            Parent fxml = FXMLLoader.load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
-            scene = new Scene(fxml, 300, 155);
-            //stage.setScene(scene);
-            //stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

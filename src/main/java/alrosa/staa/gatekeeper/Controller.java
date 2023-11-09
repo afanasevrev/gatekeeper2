@@ -451,7 +451,7 @@ public class Controller implements Initializable {
                     switch (value) {
                         case MAINSYSTEM:
                             try {
-                                boxesController.start(stage);
+                               // boxesController.start(stage);
                             } catch (Exception e) {
                                 throw new RuntimeException(e);
                             }
