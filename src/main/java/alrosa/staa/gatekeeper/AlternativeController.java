@@ -39,6 +39,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -246,7 +247,8 @@ public class AlternativeController implements Initializable {
     private AnchorPane pane = new AnchorPane();
     @FXML
     private TextField textField = new TextField();
-
+    @FXML
+    private VBox vbox = new VBox();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Прикрепляем главное окно
@@ -460,11 +462,11 @@ public class AlternativeController implements Initializable {
 
                         pane.getChildren().addAll(boxesController.loader);
 
-                        anchorPaneForObjects.getChildren().clear();
-                        anchorPaneForObjects.getChildren().add(pane);
+                        vbox.getChildren().clear();
+                        vbox.getChildren().add(pane);
                         break;
                     case SERVER:
-                        anchorPaneForObjects.getChildren().clear();
+                        vbox.getChildren().clear();
                         break;
                     default:
                         System.out.println("Selected item: " + value);
