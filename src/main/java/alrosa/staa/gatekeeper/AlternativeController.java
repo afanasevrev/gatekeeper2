@@ -1,7 +1,7 @@
 package alrosa.staa.gatekeeper;
 
 import alrosa.staa.gatekeeper.containers.*;
-import alrosa.staa.gatekeeper.controllersforboxes.BoxesController;
+import alrosa.staa.gatekeeper.controllersforboxes.Boxes;
 import alrosa.staa.gatekeeper.objects.Direction;
 import alrosa.staa.gatekeeper.objects.bureau.Bureau;
 import alrosa.staa.gatekeeper.objects.bureau.Man;
@@ -243,19 +243,13 @@ public class AlternativeController implements Initializable {
     private static TreeItem<Global> item;
 
     //Создаем экземпляр BoxesController
-    private BoxesController boxesController;
+    private Boxes boxes = new Boxes();
+    //Окно для объекта, отображается при выборе объекта на дереве
     private AnchorPane pane = new AnchorPane();
-    @FXML
-    private TextField textField = new TextField();
     @FXML
     private VBox vbox = new VBox();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Прикрепляем главное окно
-        //AnchorPane.setLeftAnchor(pane, 0.0);
-        //AnchorPane.setBottomAnchor(pane, 0.0);
-        //AnchorPane.setRightAnchor(pane, 0.0);
-        //AnchorPane.setTopAnchor(pane, 0.0);
         //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
         AnchorPane.setLeftAnchor(root, 0.0);
         AnchorPane.setBottomAnchor(root, 0.0);
@@ -325,6 +319,8 @@ public class AlternativeController implements Initializable {
         Tooltip.install(toggleButtonOrganization, new Tooltip("Организация"));
         //Добавляем всплывающий текст к кнопке отдел
         Tooltip.install(toggleButtonOffice, new Tooltip("Отдел"));
+        //Добавляем всплывающий текст к кнопке консоль
+        Tooltip.install(toggleButtonConsole, new Tooltip("Консоль"));
 
         anchorPaneForItems.getChildren().addAll(root);
         imageViewMain.setFitWidth(25);
@@ -458,10 +454,8 @@ public class AlternativeController implements Initializable {
                 Direction value = selectedItem1.getValue().getDirection();
                 switch (value) {
                     case MAINSYSTEM:
-                        boxesController = new BoxesController();
-
-                        pane.getChildren().addAll(boxesController.loader);
-
+                        boxes.init(Direction.MAINSYSTEM);
+                        pane.getChildren().addAll(boxes.loader);
                         vbox.getChildren().clear();
                         vbox.getChildren().add(pane);
                         break;

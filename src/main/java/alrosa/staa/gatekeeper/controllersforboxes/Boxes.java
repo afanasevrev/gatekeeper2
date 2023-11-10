@@ -1,6 +1,7 @@
 package alrosa.staa.gatekeeper.controllersforboxes;
 
 import alrosa.staa.gatekeeper.GateKeeper;
+import alrosa.staa.gatekeeper.objects.Direction;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +17,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BoxesController  {
+public class Boxes  {
     public Parent loader;
-    public Scene scene;
-    public BoxesController() {
+    public void init(Direction direction) {
         try {
-            loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
+            switch (direction) {
+                case MAINSYSTEM:
+                loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
+                break;
+                default:
+
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
