@@ -454,16 +454,25 @@ public class AlternativeController implements Initializable {
                 Direction value = selectedItem1.getValue().getDirection();
                 switch (value) {
                     case MAINSYSTEM:
+                        pane.getChildren().clear();
                         boxes.init(Direction.MAINSYSTEM);
-                        pane.getChildren().addAll(boxes.loader);
+                        pane.getChildren().add(boxes.loader);
                         vbox.getChildren().clear();
                         vbox.getChildren().add(pane);
                         break;
                     case SERVER:
+                        pane.getChildren().clear();
+                        boxes.init(Direction.SERVER);
+                        pane.getChildren().add(boxes.loader);
                         vbox.getChildren().clear();
+                        vbox.getChildren().add(pane);
                         break;
                     default:
-                        System.out.println("Selected item: " + value);
+                        pane.getChildren().clear();
+                        boxes.init(Direction.COMPUTER);
+                        pane.getChildren().add(boxes.loader);
+                        vbox.getChildren().clear();
+                        vbox.getChildren().add(pane);
                 }
             }
         });

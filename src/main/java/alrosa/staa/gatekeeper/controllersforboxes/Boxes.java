@@ -23,10 +23,13 @@ public class Boxes  {
         try {
             switch (direction) {
                 case MAINSYSTEM:
-                loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
-                break;
+                    loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/mainsystem.fxml"));
+                    break;
+                case SERVER:
+                    loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/server.fxml"));
+                    break;
                 default:
-
+                    loader = new FXMLLoader().load(GateKeeper.class.getResource("controllersforboxes/default.fxml"));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alrosa.staa.gatekeeper.AlternativeController">
+   <children>
+      <Label layoutX="15.0" layoutY="125.0" prefHeight="35.0" prefWidth="150.0" text="Идентификатор">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="30.0" prefHeight="35.0" prefWidth="150.0" text="Наименование">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="75.0" prefHeight="35.0" prefWidth="150.0" text="IP - адрес">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="170.0" layoutY="30.0" prefHeight="35.0" prefWidth="200.0" text="Сервер" />
+      <TextField layoutX="170.0" layoutY="75.0" prefHeight="35.0" prefWidth="200.0" />
+      <Label layoutX="170.0" layoutY="125.0" prefHeight="35.0" prefWidth="200.0" text="1xpscdtrewqolpkskfjbsf">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
