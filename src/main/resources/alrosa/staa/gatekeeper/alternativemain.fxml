@@ -18,8 +18,8 @@
                            <children>
                               <AnchorPane fx:id="anchorPaneForButtons" layoutY="155.0" prefHeight="45.0" prefWidth="300.0">
                                  <children>
-                                    <Button fx:id="apply" layoutX="133.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Создать" />
-                                    <Button fx:id="cancel" layoutX="215.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Отмена" />
+                                    <Button fx:id="apply" onAction="#isPressedApply" layoutX="133.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Создать" />
+                                    <Button fx:id="cancel" onAction="#isPressedCancel" layoutX="215.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Отмена" />
                                  </children>
                               </AnchorPane>
                               <VBox fx:id="vbox" prefHeight="155.0" prefWidth="300.0" />

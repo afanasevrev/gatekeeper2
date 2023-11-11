@@ -78,6 +78,9 @@ public class AlternativeController implements Initializable {
     //Кнопка отменить
     @FXML
     private Button cancel = new Button();
+    //Наименование объекта
+    @FXML
+    public TextField nameObject = new TextField();
     //Кнопка для выбора сервера
     @FXML
     private ToggleButton toggleButtonServer = new ToggleButton();
@@ -241,7 +244,6 @@ public class AlternativeController implements Initializable {
     выбранный объект в дереве
     */
     private static TreeItem<Global> item;
-
     //Создаем экземпляр BoxesController
     private Boxes boxes = new Boxes();
     //Окно для объекта, отображается при выборе объекта на дереве
@@ -459,6 +461,8 @@ public class AlternativeController implements Initializable {
                         pane.getChildren().add(boxes.loader);
                         vbox.getChildren().clear();
                         vbox.getChildren().add(pane);
+                        nameObject.setText("MAIN");
+                        System.out.println(nameObject.getText());
                         break;
                     case SERVER:
                         pane.getChildren().clear();
@@ -473,6 +477,7 @@ public class AlternativeController implements Initializable {
                         pane.getChildren().add(boxes.loader);
                         vbox.getChildren().clear();
                         vbox.getChildren().add(pane);
+                        break;
                 }
             }
         });
@@ -568,5 +573,17 @@ public class AlternativeController implements Initializable {
         }
         //Сортируем элементы дерева после необходимых итераций
         item.getChildren().sort(Comparator.comparing(t->t.getValue().toString()));
+    }
+
+    @FXML
+    public void isPressedApply(ActionEvent event) {
+        TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
+        Direction value = selectedItem.getValue().getDirection();
+
+        System.out.println("Selected item: " + selectedItem.getValue().getDirection());
+    }
+    @FXML
+    public void isPressedCancel(ActionEvent event) {
+
     }
 }
