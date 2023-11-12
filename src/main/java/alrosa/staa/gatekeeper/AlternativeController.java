@@ -45,6 +45,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 public class AlternativeController implements Initializable {
@@ -250,8 +251,12 @@ public class AlternativeController implements Initializable {
     private AnchorPane pane = new AnchorPane();
     @FXML
     private VBox vbox = new VBox();
+    private static String text;
+    private static String text1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        nameObject.setText(text);
+        text1 = nameObject.getText();
         //Прикрепляем дерево к окну так, чтобы он растягивался вместе с ним
         AnchorPane.setLeftAnchor(root, 0.0);
         AnchorPane.setBottomAnchor(root, 0.0);
@@ -456,13 +461,12 @@ public class AlternativeController implements Initializable {
                 Direction value = selectedItem1.getValue().getDirection();
                 switch (value) {
                     case MAINSYSTEM:
+                        text = selectedItem1.getValue().toString();
                         pane.getChildren().clear();
                         boxes.init(Direction.MAINSYSTEM);
                         pane.getChildren().add(boxes.loader);
                         vbox.getChildren().clear();
                         vbox.getChildren().add(pane);
-                        nameObject.setText("MAIN");
-                        System.out.println(nameObject.getText());
                         break;
                     case SERVER:
                         pane.getChildren().clear();
@@ -481,6 +485,7 @@ public class AlternativeController implements Initializable {
                 }
             }
         });
+
     }
     //Метод для добавления объекта в дерево системы
     private void addItem(TreeItem treeItem, Image image) {
@@ -580,7 +585,9 @@ public class AlternativeController implements Initializable {
         TreeItem<Global> selectedItem = (TreeItem<Global>) root.getSelectionModel().getSelectedItem();
         Direction value = selectedItem.getValue().getDirection();
 
-        System.out.println("Selected item: " + selectedItem.getValue().getDirection());
+        selectedItem.getValue().setComplete_name(text1);
+        text = selectedItem.getValue().toString();
+        //System.out.println("Selected item: " + selectedItem.getValue().getDirection());
     }
     @FXML
     public void isPressedCancel(ActionEvent event) {
